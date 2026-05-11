@@ -5,8 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pytrance"
 version = "0.1.0"
-description = "PyTrance: utilities for subcellular spatial transcriptomics analysis"
-requires-python = ">=3.8"
+authors = [
+  { name="Leon Strenger", email="leon.strenger@mdc-berlin.de" },
+]
+description = "pyTrance: framework for subcellular spatial transcriptomics analysis"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "GPL-2.0"
+license-files = ["LICENSE"]
 
 [project.optional-dependencies]
 all = []
