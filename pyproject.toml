@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytrance"
+version = "0.1.0"
+description = "PyTrance: utilities for subcellular spatial transcriptomics analysis"
+requires-python = ">=3.8"
+
+[project.optional-dependencies]
+all = []
