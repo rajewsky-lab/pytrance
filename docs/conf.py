@@ -18,6 +18,7 @@ autoapi_options = [
     "show-inheritance",
     "show-module-summary",
 ]
+autoapi_add_toctree_entry = False
 
 napoleon_numpy_docstring = True
 napoleon_google_docstring = False

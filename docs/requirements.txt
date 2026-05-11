@@ -2,3 +2,8 @@ sphinx
 pydata-sphinx-theme
 sphinx-autoapi>=3.0
 myst-nb
+leidenalg
+scanpy>=1.10.3
+shapely>=2.0
+tensorboard>=2.20
+torch-geometric>=2.6
