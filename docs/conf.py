@@ -24,7 +24,7 @@ napoleon_google_docstring = False
 
 html_theme = "pydata_sphinx_theme"
 html_theme_options = {
-    "github_url": "https://github.com/LeonDerProfi/pyTrance",
+    "github_url": "https://github.com/rajewsky-lab/pyTrance",
     "navbar_end": ["theme-switcher", "navbar-icon-links"],
 }
 
