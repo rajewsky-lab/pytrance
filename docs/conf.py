@@ -27,6 +27,7 @@ html_theme = "pydata_sphinx_theme"
 html_theme_options = {
     "github_url": "https://github.com/rajewsky-lab/pyTrance",
     "navbar_end": ["theme-switcher", "navbar-icon-links"],
+    "show_toc_level": 0,
 }
 
 intersphinx_mapping = {
@@ -36,3 +37,6 @@ intersphinx_mapping = {
 }
 
 exclude_patterns = ["_build"]
+
+nb_execution_mode = "off"
+nb_merge_streams = True

@@ -1,4 +1,7 @@
 API Reference
 =============
 
-.. autoapi-index::
+.. toctree::
+   :maxdepth: 2
+
+   autoapi/pytrance/index

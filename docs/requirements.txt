@@ -6,4 +6,6 @@ leidenalg
 scanpy>=1.10.3
 shapely>=2.0
 tensorboard>=2.20
+torch
+torchvision
 torch-geometric>=2.6
