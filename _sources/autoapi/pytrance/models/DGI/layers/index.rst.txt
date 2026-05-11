@@ -1,0 +1,17 @@
+pytrance.models.DGI.layers
+==========================
+
+.. py:module:: pytrance.models.DGI.layers
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pytrance/models/DGI/layers/discriminator/index
+   /autoapi/pytrance/models/DGI/layers/gcn/index
+   /autoapi/pytrance/models/DGI/layers/readout/index
+
+

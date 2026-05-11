@@ -1,0 +1,45 @@
+pytrance.models.DGI.models.dgi
+==============================
+
+.. py:module:: pytrance.models.DGI.models.dgi
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pytrance.models.DGI.models.dgi.DGI
+
+
+Module Contents
+---------------
+
+.. py:class:: DGI(n_in, n_h, act='sigmoid', layer_type='gcn')
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: layer_type
+      :value: 'gcn'
+
+
+
+   .. py:attribute:: layers
+
+
+   .. py:attribute:: read
+
+
+   .. py:attribute:: sigm
+
+
+   .. py:attribute:: disc
+
+
+   .. py:method:: forward(seq1, adj1, seq2, adj2, sparse, msk, samp_bias1, samp_bias2)
+
+
+   .. py:method:: embed(seq, adj, sparse, msk)
+
+

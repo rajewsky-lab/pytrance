@@ -1,0 +1,25 @@
+pytrance.models.DGI.layers.readout
+==================================
+
+.. py:module:: pytrance.models.DGI.layers.readout
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pytrance.models.DGI.layers.readout.AvgReadout
+
+
+Module Contents
+---------------
+
+.. py:class:: AvgReadout
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:method:: forward(seq, msk)
+
+

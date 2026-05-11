@@ -1,0 +1,31 @@
+pytrance.models.DGI.models.logreg
+=================================
+
+.. py:module:: pytrance.models.DGI.models.logreg
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pytrance.models.DGI.models.logreg.LogReg
+
+
+Module Contents
+---------------
+
+.. py:class:: LogReg(ft_in, nb_classes)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: fc
+
+
+   .. py:method:: weights_init(m)
+
+
+   .. py:method:: forward(seq)
+
+

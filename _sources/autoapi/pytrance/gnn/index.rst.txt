@@ -1,0 +1,103 @@
+pytrance.gnn
+============
+
+.. py:module:: pytrance.gnn
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pytrance.gnn.train_epoch
+   pytrance.gnn.compute_embeddings
+   pytrance.gnn.train
+
+
+Module Contents
+---------------
+
+.. py:function:: train_epoch(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, optimiser: torch.optim.Optimizer, device: torch.device, layer_type: str = 'gcn', sparse: bool = True, corruption: str = 'feature_shuffling', seed: int = 808) -> Tuple[float, numpy.ndarray]
+
+   Train model for one epoch with contrastive learning.
+
+   :param model: Graph neural network model to train.
+   :type model: torch.nn.Module
+   :param train_loader: PyTorch DataLoader providing batches of graph data.
+   :type train_loader: DataLoader
+   :param optimiser: Optimizer for updating model parameters.
+   :type optimiser: torch.optim.Optimizer
+   :param device: Device (CPU/GPU) to run training on.
+   :type device: torch.device
+   :param layer_type: Type of layer Default is "gcn".
+   :type layer_type: str
+   :param sparse: Whether to use sparse adjacency matrix representation. Default is True
+   :type sparse: bool
+   :param corruption: Corruption strategy for negative samples ('feature_shuffling' or
+                      'adjacency_shuffling'). Default is "feature_shuffling".
+   :type corruption: str, optional
+   :param seed: Random seed for reproducibility in corruption. Default is 808.
+   :type seed: int, optional
+
+   :returns:
+
+             - avg_loss : float - Average training loss over all batches
+             - spot_ids : ndarray - Spot/node IDs from the last batch
+   :rtype: tuple
+
+
+.. py:function:: compute_embeddings(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, embeds_shape: Tuple[int, Ellipsis], layer_type: str = 'gcn') -> numpy.ndarray
+
+   Compute spot embeddings using trained model.
+
+   :param model: Trained graph neural network model.
+   :type model: torch.nn.Module
+   :param train_loader: PyTorch DataLoader providing batches of graph data.
+   :type train_loader: DataLoader
+   :param embeds_shape: Expected output shape for embedding array.
+   :type embeds_shape: tuple
+   :param layer_type: Type of graph layer ('gcn' or other). Affects adjacency matrix format.
+                      Default is "gcn".
+   :type layer_type: str, optional
+
+   :returns: Spot embeddings of shape embeds_shape with one embedding per spot.
+             Ordering corresponds to spot_ids extracted from batches.
+   :rtype: ndarray
+
+
+.. py:function:: train(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, optimiser: torch.optim.Optimizer, device: torch.device, embeds_shape: Tuple[int, Ellipsis], n_epochs: int, sparse: bool = True, layer_type: str = 'gcn', dir_path: Optional[str] = None, corruption: str = 'feature_shuffling', save_steps: int = 10, save_final: bool = True) -> None
+
+   Train graph neural network model with contrastive learning.
+
+   :param model: Graph neural network model to train.
+   :type model: torch.nn.Module
+   :param train_loader: PyTorch DataLoader providing batches of graph data.
+   :type train_loader: DataLoader
+   :param optimiser: Optimizer for updating model parameters.
+   :type optimiser: torch.optim.Optimizer
+   :param device: Device (CPU/GPU) to run training on.
+   :type device: torch.device
+   :param embeds_shape: Expected output shape for embedding array.
+   :type embeds_shape: tuple
+   :param n_epochs: Number of training epochs.
+   :type n_epochs: int
+   :param sparse: Whether to use sparse adjacency matrix representation. Default is True.
+   :type sparse: bool
+   :param layer_type: Type of graph layer. Default is "gcn".
+   :type layer_type: str
+   :param dir_path: Directory path for saving results. If None, uses current working directory.
+                    Default is None.
+   :type dir_path: str, optional
+   :param corruption: Corruption strategy for negative samples. Default is "feature_shuffling".
+   :type corruption: str, optional
+   :param save_steps: Number of checkpoints to save evenly spaced throughout training.
+                      Default is 10.
+   :type save_steps: int, optional
+   :param save_final: Whether to compute and save the embeddings after training. Default is True.
+   :type save_final: bool, optional
+
+   :returns: Saves training artifacts to disk including model checkpoints, embeddings,
+             and TensorBoard event files.
+   :rtype: None
+
+

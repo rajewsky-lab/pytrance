@@ -1,0 +1,52 @@
+pytrance.data.celldata
+======================
+
+.. py:module:: pytrance.data.celldata
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pytrance.data.celldata.CellData
+
+
+Module Contents
+---------------
+
+.. py:class:: CellData(adata: anndata.AnnData, cell_indices: Dict, graph_kwargs: Optional[Dict] = None, adj: Optional[scipy.sparse.spmatrix] = None, corruption: str = 'feature_shuffling', seed: int = 808)
+
+   Bases: :py:obj:`torch.utils.data.Dataset`
+
+
+   PyTorch Dataset for cell-level graph data of transcripts.
+
+   :param adata: Annotated data object with transcript-level observations and features.
+   :type adata: AnnData
+   :param cell_indices: Dictionary mapping cell IDs to arrays of transcript indices for each cell.
+   :type cell_indices: dict
+   :param graph_kwargs: Keyword arguments for neighbor graph construction passed to get_neighbors().
+                        Default is None.
+   :type graph_kwargs: dict, optional
+   :param adj: Precomputed adjacency matrix. If None, compute per-cell from coordinates.
+               Default is None.
+   :type adj: sparse matrix, optional
+   :param corruption: Corruption strategy for negative samples in contrastive learning.
+                      Default is "feature_shuffling".
+   :type corruption: {'feature_shuffling'}, optional
+   :param seed: Random seed for reproducibility. Default is 808.
+   :type seed: int, optional
+
+   .. attribute:: data
+
+      List of torch_geometric.data.Data objects, one per cell.
+
+      :type: list
+
+
+   .. py:attribute:: data
+      :value: []
+
+
+

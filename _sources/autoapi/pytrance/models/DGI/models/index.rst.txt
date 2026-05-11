@@ -1,0 +1,16 @@
+pytrance.models.DGI.models
+==========================
+
+.. py:module:: pytrance.models.DGI.models
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pytrance/models/DGI/models/dgi/index
+   /autoapi/pytrance/models/DGI/models/logreg/index
+
+

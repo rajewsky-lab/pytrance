@@ -1,0 +1,26 @@
+pytrance
+========
+
+.. py:module:: pytrance
+
+.. autoapi-nested-parse::
+
+   pyTrance: subcellular spatial transcriptomics analysis.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pytrance/cell_score/index
+   /autoapi/pytrance/data/index
+   /autoapi/pytrance/gnn/index
+   /autoapi/pytrance/models/index
+   /autoapi/pytrance/plotting/index
+   /autoapi/pytrance/tools/index
+   /autoapi/pytrance/utils/index
+
+

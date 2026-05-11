@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; pyTrance 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyTrance 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="autoapi/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/LeonDerProfi/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="autoapi/index.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/LeonDerProfi/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.adj_to_bias">adj_to_bias() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/tools/index.html#pytrance.tools.aggregate_transcript_embeddings">aggregate_transcript_embeddings() (in module pytrance.tools)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/layers/readout/index.html#pytrance.models.DGI.layers.readout.AvgReadout">AvgReadout (class in pytrance.models.DGI.layers.readout)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/data/celldata/index.html#pytrance.data.celldata.CellData">CellData (class in pytrance.data.celldata)</a>
+</li>
+      <li><a href="autoapi/pytrance/plotting/index.html#pytrance.plotting.cells_in_grid">cells_in_grid() (in module pytrance.plotting)</a>
+</li>
+      <li><a href="autoapi/pytrance/cell_score/index.html#pytrance.cell_score.clq">clq() (in module pytrance.cell_score)</a>
+</li>
+      <li><a href="autoapi/pytrance/cell_score/index.html#pytrance.cell_score.clq_pairwise">clq_pairwise() (in module pytrance.cell_score)</a>
+</li>
+      <li><a href="autoapi/pytrance/cell_score/index.html#pytrance.cell_score.clq_significance">clq_significance() (in module pytrance.cell_score)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/cell_score/index.html#pytrance.cell_score.clq_single_cell">clq_single_cell() (in module pytrance.cell_score)</a>
+</li>
+      <li><a href="autoapi/pytrance/tools/index.html#pytrance.tools.cluster_gene_embeddings">cluster_gene_embeddings() (in module pytrance.tools)</a>
+</li>
+      <li><a href="autoapi/pytrance/tools/index.html#pytrance.tools.cluster_gene_embeddings_leiden">cluster_gene_embeddings_leiden() (in module pytrance.tools)</a>
+</li>
+      <li><a href="autoapi/pytrance/gnn/index.html#pytrance.gnn.compute_embeddings">compute_embeddings() (in module pytrance.gnn)</a>
+</li>
+      <li><a href="autoapi/pytrance/utils/index.html#pytrance.utils.compute_figure_size">compute_figure_size() (in module pytrance.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/data/celldata/index.html#id0">data (pytrance.data.celldata.CellData attribute)</a>, <a href="autoapi/pytrance/data/celldata/index.html#pytrance.data.celldata.CellData.data">[1]</a>
+</li>
+      <li><a href="autoapi/pytrance/plotting/index.html#pytrance.plotting.dendrogram">dendrogram() (in module pytrance.plotting)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI">DGI (class in pytrance.models.DGI.models.dgi)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.disc">disc (pytrance.models.DGI.models.dgi.DGI attribute)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/layers/discriminator/index.html#pytrance.models.DGI.layers.discriminator.Discriminator">Discriminator (class in pytrance.models.DGI.layers.discriminator)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.embed">embed() (pytrance.models.DGI.models.dgi.DGI method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/plotting/index.html#pytrance.plotting.embedding_pca">embedding_pca() (in module pytrance.plotting)</a>
+
+      <ul>
+        <li><a href="autoapi/pytrance/tools/index.html#pytrance.tools.embedding_pca">(in module pytrance.tools)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/layers/discriminator/index.html#pytrance.models.DGI.layers.discriminator.Discriminator.f_k">f_k (pytrance.models.DGI.layers.discriminator.Discriminator attribute)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#pytrance.models.DGI.layers.gcn.GCN.fc">fc (pytrance.models.DGI.layers.gcn.GCN attribute)</a>
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/models/logreg/index.html#pytrance.models.DGI.models.logreg.LogReg.fc">(pytrance.models.DGI.models.logreg.LogReg attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/pytrance/models/DGI/layers/discriminator/index.html#pytrance.models.DGI.layers.discriminator.Discriminator.forward">forward() (pytrance.models.DGI.layers.discriminator.Discriminator method)</a>
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#pytrance.models.DGI.layers.gcn.GCN.forward">(pytrance.models.DGI.layers.gcn.GCN method)</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/layers/readout/index.html#pytrance.models.DGI.layers.readout.AvgReadout.forward">(pytrance.models.DGI.layers.readout.AvgReadout method)</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.forward">(pytrance.models.DGI.models.dgi.DGI method)</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/models/logreg/index.html#pytrance.models.DGI.models.logreg.LogReg.forward">(pytrance.models.DGI.models.logreg.LogReg method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#pytrance.models.DGI.layers.gcn.GCN">GCN (class in pytrance.models.DGI.layers.gcn)</a>
+</li>
+      <li><a href="autoapi/pytrance/utils/index.html#pytrance.utils.get_gene_subclusters">get_gene_subclusters() (in module pytrance.utils)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/utils/index.html#pytrance.utils.get_neighbors">get_neighbors() (in module pytrance.utils)</a>
+</li>
+      <li><a href="autoapi/pytrance/utils/index.html#pytrance.utils.get_tree_linkage">get_tree_linkage() (in module pytrance.utils)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.layer_type">layer_type (pytrance.models.DGI.models.dgi.DGI attribute)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.layers">layers (pytrance.models.DGI.models.dgi.DGI attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.load_data">load_data() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/models/logreg/index.html#pytrance.models.DGI.models.logreg.LogReg">LogReg (class in pytrance.models.DGI.models.logreg)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/plotting/index.html#pytrance.plotting.mask">mask() (in module pytrance.plotting)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.micro_f1">micro_f1() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="autoapi/pytrance/index.html#module-pytrance">pytrance</a>
+</li>
+        <li><a href="autoapi/pytrance/cell_score/index.html#module-pytrance.cell_score">pytrance.cell_score</a>
+</li>
+        <li><a href="autoapi/pytrance/data/index.html#module-pytrance.data">pytrance.data</a>
+</li>
+        <li><a href="autoapi/pytrance/data/celldata/index.html#module-pytrance.data.celldata">pytrance.data.celldata</a>
+</li>
+        <li><a href="autoapi/pytrance/gnn/index.html#module-pytrance.gnn">pytrance.gnn</a>
+</li>
+        <li><a href="autoapi/pytrance/models/index.html#module-pytrance.models">pytrance.models</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/index.html#module-pytrance.models.DGI">pytrance.models.DGI</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/layers/index.html#module-pytrance.models.DGI.layers">pytrance.models.DGI.layers</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/layers/discriminator/index.html#module-pytrance.models.DGI.layers.discriminator">pytrance.models.DGI.layers.discriminator</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#module-pytrance.models.DGI.layers.gcn">pytrance.models.DGI.layers.gcn</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/layers/readout/index.html#module-pytrance.models.DGI.layers.readout">pytrance.models.DGI.layers.readout</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/models/index.html#module-pytrance.models.DGI.models">pytrance.models.DGI.models</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#module-pytrance.models.DGI.models.dgi">pytrance.models.DGI.models.dgi</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/models/logreg/index.html#module-pytrance.models.DGI.models.logreg">pytrance.models.DGI.models.logreg</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/utils/index.html#module-pytrance.models.DGI.utils">pytrance.models.DGI.utils</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#module-pytrance.models.DGI.utils.process">pytrance.models.DGI.utils.process</a>
+</li>
+        <li><a href="autoapi/pytrance/plotting/index.html#module-pytrance.plotting">pytrance.plotting</a>
+</li>
+        <li><a href="autoapi/pytrance/tools/index.html#module-pytrance.tools">pytrance.tools</a>
+</li>
+        <li><a href="autoapi/pytrance/utils/index.html#module-pytrance.utils">pytrance.utils</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.normalize_adj">normalize_adj() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#pytrance.models.DGI.layers.gcn.GCN.out_features">out_features (pytrance.models.DGI.layers.gcn.GCN attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/plotting/index.html#pytrance.plotting.pairwise_clq_heatmap">pairwise_clq_heatmap() (in module pytrance.plotting)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.parse_index_file">parse_index_file() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.parse_skipgram">parse_skipgram() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.preprocess_adj">preprocess_adj() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.preprocess_features">preprocess_features() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.process_tu">process_tu() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li>
+    pytrance
+
+      <ul>
+        <li><a href="autoapi/pytrance/index.html#module-pytrance">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.cell_score
+
+      <ul>
+        <li><a href="autoapi/pytrance/cell_score/index.html#module-pytrance.cell_score">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.data
+
+      <ul>
+        <li><a href="autoapi/pytrance/data/index.html#module-pytrance.data">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.data.celldata
+
+      <ul>
+        <li><a href="autoapi/pytrance/data/celldata/index.html#module-pytrance.data.celldata">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.gnn
+
+      <ul>
+        <li><a href="autoapi/pytrance/gnn/index.html#module-pytrance.gnn">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/index.html#module-pytrance.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/index.html#module-pytrance.models.DGI">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.layers
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/layers/index.html#module-pytrance.models.DGI.layers">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pytrance.models.DGI.layers.discriminator
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/layers/discriminator/index.html#module-pytrance.models.DGI.layers.discriminator">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.layers.gcn
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#module-pytrance.models.DGI.layers.gcn">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.layers.readout
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/layers/readout/index.html#module-pytrance.models.DGI.layers.readout">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.models
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/models/index.html#module-pytrance.models.DGI.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.models.dgi
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#module-pytrance.models.DGI.models.dgi">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.models.logreg
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/models/logreg/index.html#module-pytrance.models.DGI.models.logreg">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.utils
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/utils/index.html#module-pytrance.models.DGI.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.models.DGI.utils.process
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#module-pytrance.models.DGI.utils.process">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.plotting
+
+      <ul>
+        <li><a href="autoapi/pytrance/plotting/index.html#module-pytrance.plotting">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.tools
+
+      <ul>
+        <li><a href="autoapi/pytrance/tools/index.html#module-pytrance.tools">module</a>
+</li>
+      </ul></li>
+      <li>
+    pytrance.utils
+
+      <ul>
+        <li><a href="autoapi/pytrance/utils/index.html#module-pytrance.utils">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.read">read (pytrance.models.DGI.models.dgi.DGI attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.sample_mask">sample_mask() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/models/dgi/index.html#pytrance.models.DGI.models.dgi.DGI.sigm">sigm (pytrance.models.DGI.models.dgi.DGI attribute)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.sparse_mx_to_torch_sparse_tensor">sparse_mx_to_torch_sparse_tensor() (in module pytrance.models.DGI.utils.process)</a>
+
+      <ul>
+        <li><a href="autoapi/pytrance/utils/index.html#pytrance.utils.sparse_mx_to_torch_sparse_tensor">(in module pytrance.utils)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.sparse_to_tuple">sparse_to_tuple() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/models/DGI/utils/process/index.html#pytrance.models.DGI.utils.process.standardize_data">standardize_data() (in module pytrance.models.DGI.utils.process)</a>
+</li>
+      <li><a href="autoapi/pytrance/tools/index.html#pytrance.tools.subcluster">subcluster() (in module pytrance.tools)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/gnn/index.html#pytrance.gnn.train">train() (in module pytrance.gnn)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/gnn/index.html#pytrance.gnn.train_epoch">train_epoch() (in module pytrance.gnn)</a>
+</li>
+      <li><a href="autoapi/pytrance/plotting/index.html#pytrance.plotting.transcripts_histogram">transcripts_histogram() (in module pytrance.plotting)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/pytrance/models/DGI/layers/discriminator/index.html#pytrance.models.DGI.layers.discriminator.Discriminator.weights_init">weights_init() (pytrance.models.DGI.layers.discriminator.Discriminator method)</a>
+
+      <ul>
+        <li><a href="autoapi/pytrance/models/DGI/layers/gcn/index.html#pytrance.models.DGI.layers.gcn.GCN.weights_init">(pytrance.models.DGI.layers.gcn.GCN method)</a>
+</li>
+        <li><a href="autoapi/pytrance/models/DGI/models/logreg/index.html#pytrance.models.DGI.models.logreg.LogReg.weights_init">(pytrance.models.DGI.models.logreg.LogReg method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

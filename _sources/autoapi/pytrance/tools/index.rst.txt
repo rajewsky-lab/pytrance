@@ -1,0 +1,130 @@
+pytrance.tools
+==============
+
+.. py:module:: pytrance.tools
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pytrance.tools.aggregate_transcript_embeddings
+   pytrance.tools.cluster_gene_embeddings
+   pytrance.tools.cluster_gene_embeddings_leiden
+   pytrance.tools.embedding_pca
+   pytrance.tools.subcluster
+
+
+Module Contents
+---------------
+
+.. py:function:: aggregate_transcript_embeddings(node_embeds: numpy.ndarray, adata: anndata.AnnData, gene_key: str = 'gene') -> pandas.DataFrame
+
+   Aggregate transcript embeddings by gene using mean pooling.
+
+   :param node_embeds: Transcript embedding matrix.
+   :type node_embeds: ndarray
+   :param adata: Annotated data object containing observation metadata.
+   :type adata: AnnData
+   :param gene_key: Column name in adata.obs for gene assignment. Default is "gene".
+   :type gene_key: str, optional
+
+   :returns: Gene-level embeddings with genes as index and embedding dimensions as columns.
+   :rtype: DataFrame
+
+
+.. py:function:: cluster_gene_embeddings(embeds: numpy.ndarray, n_clusters: int = 2, adata: Optional[anndata.AnnData] = None, algo: str = 'kmeans', return_labels: bool = False, seed: int = 808) -> Optional[numpy.ndarray]
+
+   Cluster gene embeddings using k-means or agglomerative clustering.
+
+   :param embeds: Gene embedding matrix.
+   :type embeds: ndarray
+   :param n_clusters: Number of clusters. Default is 2.
+   :type n_clusters: int, optional
+   :param adata: Annotated data object containing observation metadata. Default is None.
+   :type adata: AnnData, optional
+   :param algo: Clustering algorithm. Default is "kmeans".
+   :type algo: {'kmeans', 'agglomerative'}, optional
+   :param return_labels: If True, return cluster labels. If False, return None. Default is False.
+   :type return_labels: bool, optional
+   :param seed: Random seed for reproducibility. Default is 808.
+   :type seed: int, optional
+
+   :returns: Cluster labels if return_labels is True, otherwise None.
+   :rtype: ndarray or None
+
+
+.. py:function:: cluster_gene_embeddings_leiden(embeds: numpy.ndarray, resolution: float = 1, n_neighbors: int = 5, adata: Optional[anndata.AnnData] = None, return_labels: bool = False, key_added: str = 'leiden', flavor: str = 'igraph', seed: int = 808) -> Optional[numpy.ndarray]
+
+   Cluster gene embeddings using Leiden algorithm.
+
+   :param embeds: Gene embedding matrix.
+   :type embeds: ndarray
+   :param resolution: Resolution parameter for Leiden algorithm controlling cluster granularity.
+                      Default is 1.
+   :type resolution: float, optional
+   :param n_neighbors: Number of neighbors for k-nearest neighbor graph construction. Default is 5.
+   :type n_neighbors: int, optional
+   :param adata: Annotated data object containing observation metadata. Default is None.
+   :type adata: AnnData, optional
+   :param return_labels: If True, return cluster labels. If False, return None. Default is False.
+   :type return_labels: bool, optional
+   :param key_added: Column name for cluster labels in adata.var. Default is "leiden".
+   :type key_added: str, optional
+   :param flavor: Flavor to use for leiden clustering, Default is "igraph".
+   :type flavor: str, Optional
+   :param seed: Random seed for reproducibility. Default is 808.
+   :type seed: int, optional
+
+   :returns: Cluster labels if return_labels is True, otherwise None.
+   :rtype: array-like or None
+
+
+.. py:function:: embedding_pca(embeds: pandas.DataFrame, n_components: int = 2, seed: int = 808) -> Tuple[numpy.ndarray, sklearn.decomposition.PCA]
+
+   Perform PCA dimensionality reduction on gene embeddings.
+
+   :param embeds: Gene embedding matrix.
+   :type embeds: DataFrame
+   :param n_components: Number of principal components to compute. Default is 2.
+   :type n_components: int, optional
+   :param seed: Random seed for reproducibility. Default is 808.
+   :type seed: int, optional
+
+   :returns:
+
+             - embeds_pca : ndarray
+                 Transformed embeddings of shape (n_genes, n_components).
+             - pca : PCA
+                 Fitted PCA model object.
+   :rtype: tuple
+
+
+.. py:function:: subcluster(corr_array: numpy.ndarray, genes: Sequence[Any], distance_threshold: float = 0.2, n_subclusters: Optional[int] = None, plot_tree: bool = True, gene_names_ordered: Optional[Sequence[Any]] = None, metric: str = 'euclidean', linkage: str = 'ward') -> Dict
+
+   Perform hierarchical clustering on gene embedding correlations.
+
+   :param corr_array: Gene embedding correlation matrix.
+   :type corr_array: ndarray
+   :param genes: Gene names or identifiers corresponding to rows in corr_array.
+   :type genes: array-like
+   :param distance_threshold: Distance threshold for cluster merging in hierarchical clustering.
+                              Default is 0.2.
+   :type distance_threshold: float, optional
+   :param n_subclusters: If specified, overrides distance_threshold and sets exact number of clusters.
+                         Default is None.
+   :type n_subclusters: int, optional
+   :param plot_tree: If True, generate and display dendrogram visualization. Default is True.
+   :type plot_tree: bool, optional
+   :param gene_names_ordered: Ordered gene names for dendrogram visualization. Default is None.
+   :type gene_names_ordered: array-like, optional
+   :param metric: Distance metric for clustering. Default is "euclidean".
+   :type metric: str, optional
+   :param linkage: Linkage criterion for agglomerative clustering. Default is "ward".
+   :type linkage: str, optional
+
+   :returns: Dictionary mapping subcluster IDs to lists of genes in each subcluster.
+   :rtype: dict
+
+

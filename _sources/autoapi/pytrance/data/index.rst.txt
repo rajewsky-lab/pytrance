@@ -1,0 +1,20 @@
+pytrance.data
+=============
+
+.. py:module:: pytrance.data
+
+.. autoapi-nested-parse::
+
+   Data handling module for pyTrance.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pytrance/data/celldata/index
+
+

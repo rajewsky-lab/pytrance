@@ -1,0 +1,31 @@
+pytrance.models.DGI.layers.discriminator
+========================================
+
+.. py:module:: pytrance.models.DGI.layers.discriminator
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pytrance.models.DGI.layers.discriminator.Discriminator
+
+
+Module Contents
+---------------
+
+.. py:class:: Discriminator(n_h)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: f_k
+
+
+   .. py:method:: weights_init(m)
+
+
+   .. py:method:: forward(c, h_pl, h_mi, s_bias1=None, s_bias2=None)
+
+

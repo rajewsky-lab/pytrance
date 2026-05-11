@@ -1,0 +1,209 @@
+pytrance.plotting
+=================
+
+.. py:module:: pytrance.plotting
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pytrance.plotting.embedding_pca
+   pytrance.plotting.cells_in_grid
+   pytrance.plotting.mask
+   pytrance.plotting.transcripts_histogram
+   pytrance.plotting.dendrogram
+   pytrance.plotting.pairwise_clq_heatmap
+
+
+Module Contents
+---------------
+
+.. py:function:: embedding_pca(adata: anndata.AnnData, embeds_pca: numpy.ndarray, key: str = 'leiden', pca_model: Optional[sklearn.decomposition.PCA] = None, categorical: bool = True, **kwargs: Any) -> None
+
+   Plot PCA embeddings with gene cluster coloring.
+
+   :param adata: Annotated data object containing containing observation metadata.
+   :type adata: AnnData
+   :param embeds_pca: 2D PCA-reduced embeddings.
+   :type embeds_pca: ndarray
+   :param key: Column name in adata.var for cluster assignments. Default is "leiden".
+   :type key: str, optional
+   :param pca_model: Fitted PCA model. If provided, variance explained percentages are added
+                     to axis labels. Default is None.
+   :type pca_model: PCA, optional
+   :param categorical: If True, color by categorical clusters using seaborn scatterplot.
+                       If False, use continuous color mapping. Default is True.
+   :type categorical: bool, optional
+   :param \*\*kwargs: Additional keyword arguments passed to scatterplot/scatter functions.
+
+   :returns: Displays plot using matplotlib.pyplot.show().
+   :rtype: None
+
+
+.. py:function:: cells_in_grid(n_rows: int, n_cols: int, adata: anndata.AnnData, genes: Optional[Sequence[Any]] = None, cell_list: Optional[Sequence[Any]] = None, cell_scores: Optional[Dict] = None, cell_boundaries: Optional[Union[List, numpy.ndarray, pandas.DataFrame]] = None, nucleus_boundaries: Optional[Union[List, numpy.ndarray, pandas.DataFrame]] = None, hue: str = 'gene', plot_type: str = 'scatter', z: Optional[float] = None, cell_key: str = 'cell', gene_key: str = 'gene', x_key: str = 'x', y_key: str = 'y', z_key: str = 'z', cmap: str = 'tab20', technology: Optional[str] = None, s: float = 50, scale: float = 0.1, col_padding: float = 10, row_padding: float = 10, boundary_padding: float = 5, fontsize: int = 14, return_fig: bool = False, cbar: bool = True, **kwargs: Any) -> Optional[matplotlib.figure.Figure]
+
+   Create multi-panel grid visualization of cells with spots/transcripts.
+
+   :param n_rows: Number of rows in subplot grid.
+   :type n_rows: int
+   :param n_cols: Number of columns in subplot grid.
+   :type n_cols: int
+   :param adata: Annotated data object with transcript-level observations.
+   :type adata: AnnData
+   :param genes: Genes to highlight. If None, all genes in adata are used. Default is None.
+   :type genes: array-like, optional
+   :param cell_list: List of cell IDs to plot.
+   :type cell_list: array-like
+   :param cell_scores: Co-localization scores per cell for subplot titles. Default is None.
+   :type cell_scores: dict, optional
+   :param cell_scores: (Adjusted) scores per cell for titles. Default is None.
+   :type cell_scores: dict, optional
+   :param cell_boundaries: Cell boundary coordinates (format depends on technology). Default is None.
+   :type cell_boundaries: list, ndarray, or DataFrame, optional
+   :param nucleus_boundaries: Nucleus boundary coordinates (format depends on technology). Default is None.
+   :type nucleus_boundaries: list, ndarray, or DataFrame, optional
+   :param hue: Style to use for coloring transcripts ('gene', 'gene set', 'gene set only',
+               or column name). Default is "gene".
+   :type hue: str, optional
+   :param plot_type: Type of plot for each subplot. Default is "scatter".
+   :type plot_type: {'scatter', 'histogram_absolute', 'histogram_relative'}, optional
+   :param z: Z-slice value to filter transcripts. If None, uses all z values. Default is None.
+   :type z: float, optional
+   :param cell_key: Column name in adata.obs for cell IDs. Default is "cell".
+   :type cell_key: str, optional
+   :param gene_key: Column name in adata.obs for gene assignment. Default is "gene".
+   :type gene_key: str, optional
+   :param x_key: Column name in adata.obs for x coordinates. Default is "x".
+   :type x_key: str, optional
+   :param y_key: Column name in adata.obs for y coordinates. Default is "y".
+   :type y_key: str, optional
+   :param z_key: Column name in adata.obs for z coordinates. Default is "z".
+   :type z_key: str, optional
+   :param cmap: Colormap name for gene coloring (scatter plots). Default is "tab20".
+   :type cmap: str, optional
+   :param technology: Technology for boundary format interpretation. Default is None.
+   :type technology: {'xenium', 'merfish'}, optional
+   :param s: Marker size for scatter plots. Default is 50.
+   :type s: float, optional
+   :param scale: Scale factor for subplot dimensions. Default is 0.1.
+   :type scale: float, optional
+   :param col_padding: Horizontal padding between columns. Default is 10.
+   :type col_padding: float, optional
+   :param row_padding: Vertical padding between rows. Default is 10.
+   :type row_padding: float, optional
+   :param boundary_padding: Padding around data in axis limits. Default is 5.
+   :type boundary_padding: float, optional
+   :param fontsize: Font size for subplot titles. Default is 14.
+   :type fontsize: int, optional
+   :param return_fig: If True, return figure object. If False, display with plt.show(). Default is False.
+   :type return_fig: bool, optional
+   :param cbar: Show colorbar for histogram plots. Default is True.
+   :type cbar: bool, optional
+   :param \*\*kwargs: Additional keyword arguments passed to plotting functions.
+
+   :returns: Figure object if return_fig=True, otherwise None.
+   :rtype: matplotlib.figure.Figure or None
+
+
+.. py:function:: mask(boundaries: Union[List, numpy.ndarray, pandas.DataFrame], cell: Any, ax: matplotlib.axes.Axes, technology: Optional[str] = None, z: float = 0, x_key: str = 'x', y_key: str = 'y', c: str = 'black', **kwargs: Any) -> None
+
+   Draw cell or nucleus boundary mask on matplotlib axis.
+
+   :param boundaries: Boundary coordinates. Format depends on technology type.
+   :type boundaries: list, ndarray, or DataFrame
+   :param cell: Cell ID to retrieve boundaries for.
+   :type cell: str
+   :param ax: Target axis to draw on.
+   :type ax: matplotlib.axes.Axes
+   :param technology: Technology for boundary format interpretation. Default is None.
+   :type technology: {'xenium', 'merfish'}, optional
+   :param z: Z-slice for MERFISH boundaries. Default is 0.
+   :type z: float, optional
+   :param x_key: Column name for x coordinates in DataFrame. Default is "x".
+   :type x_key: str, optional
+   :param y_key: Column name for y coordinates in DataFrame. Default is "y".
+   :type y_key: str, optional
+   :param c: Line color. Default is "black".
+   :type c: str, optional
+   :param \*\*kwargs: Additional keyword arguments passed to ax.plot().
+
+   :rtype: None
+
+
+.. py:function:: transcripts_histogram(cell_df: pandas.DataFrame, genes: Sequence[Any], ax: matplotlib.axes.Axes, fig: matplotlib.figure.Figure, type: str = 'absolute', x_key: str = 'x', y_key: str = 'y', gene_key: str = 'gene', bin_size: float = 25, vmax: Optional[float] = None, return_fig: bool = False, discrete: bool = False, cbar: bool = True, **kwargs: Any) -> Optional[matplotlib.image.AxesImage]
+
+   Create 2D histogram visualization of transcript density.
+
+   :param cell_df: Cell transcript data.
+   :type cell_df: DataFrame
+   :param genes: Genes to include in histogram.
+   :type genes: array-like
+   :param ax: Target axis for plotting.
+   :type ax: matplotlib.axes.Axes
+   :param fig: Figure object for adding colorbar.
+   :type fig: matplotlib.figure.Figure
+   :param type: Histogram type. 'absolute': counts, 'relative': counts/total,
+                'normalized': L2-normalized counts. Default is "absolute".
+   :type type: {'absolute', 'relative', 'normalized'}, optional
+   :param x_key: Column name for x coordinates. Default is "x".
+   :type x_key: str, optional
+   :param y_key: Column name for y coordinates. Default is "y".
+   :type y_key: str, optional
+   :param gene_key: Column name for gene assignment. Default is "gene".
+   :type gene_key: str, optional
+   :param bin_size: Size of histogram bins. Default is 25.
+   :type bin_size: float, optional
+   :param vmax: Maximum value for color scale. Only used for 'relative' type. Default is None.
+   :type vmax: float, optional
+   :param return_fig: If True, return image object. Default is False.
+   :type return_fig: bool, optional
+   :param discrete: If True, use discrete colors for integer counts. Default is False.
+   :type discrete: bool, optional
+   :param cbar: Show colorbar. Default is True.
+   :type cbar: bool, optional
+   :param \*\*kwargs: Additional keyword arguments passed to ax.imshow() (e.g., cmap).
+
+   :returns: Image object if return_fig=True, otherwise None.
+   :rtype: matplotlib.image.AxesImage or None
+
+
+.. py:function:: dendrogram(model: Any, gene_names_ordered: Optional[Sequence[Any]] = None, **kwargs: Any) -> Dict
+
+   Plot hierarchical clustering dendrogram from model.
+
+   :param model: Fitted hierarchical clustering model.
+   :type model: object
+   :param gene_names_ordered: Ordered gene names for x-axis labels. If None, numeric indices are used.
+                              Default is None.
+   :type gene_names_ordered: array-like, optional
+   :param \*\*kwargs: Additional keyword arguments passed to scipy.cluster.hierarchy.dendrogram().
+
+   :returns: Dendrogram dictionary from scipy.cluster.hierarchy.dendrogram().
+   :rtype: dict
+
+
+.. py:function:: pairwise_clq_heatmap(gene_set: Sequence[Any], clq_scores: Dict, return_matrix: bool = False, return_axis: bool = False, **kwargs: Any) -> Union[pandas.DataFrame, matplotlib.axes.Axes, Tuple[pandas.DataFrame, matplotlib.axes.Axes], None]
+
+   Visualize pairwise CLQ scores as heatmap.
+
+   :param gene_set: List of gene names to include in the heatmap.
+   :type gene_set: array-like
+   :param clq_scores: Dictionary mapping gene pairs (tuples) to CLQ score values.
+                      Expected keys are (gene1, gene2) tuples for all pairs in gene_set.
+   :type clq_scores: dict
+   :param return_matrix: If True, return the CLQ score matrix. Default is False.
+   :type return_matrix: bool, optional
+   :param return_axis: If True, return the heatmap axis/axes object. Default is False.
+   :type return_axis: bool, optional
+   :param \*\*kwargs: Additional keyword arguments passed to seaborn.heatmap().
+
+   :returns: Depending on return_matrix and return_axis flags:
+             - (False, False): None (displays plot)
+             - (True, False): DataFrame with CLQ scores
+             - (False, True): Heatmap axes object
+             - (True, True): Tuple of (DataFrame, heatmap axes)
+   :rtype: DataFrame or AxesSubplot or tuple or None
+
+

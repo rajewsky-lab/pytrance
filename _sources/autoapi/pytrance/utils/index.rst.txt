@@ -1,0 +1,131 @@
+pytrance.utils
+==============
+
+.. py:module:: pytrance.utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pytrance.utils.get_neighbors
+   pytrance.utils.get_gene_subclusters
+   pytrance.utils.sparse_mx_to_torch_sparse_tensor
+   pytrance.utils.get_tree_linkage
+   pytrance.utils.compute_figure_size
+
+
+Module Contents
+---------------
+
+.. py:function:: get_neighbors(cell_df: pandas.DataFrame, radius: int = 2, n_neighbors: int = 20, metric: str = 'euclidean', mode: str = 'connectivity', x_key='x_pos', y_key='y_pos', z_key=None, n_jobs: int = 1, include_self: bool = False) -> tuple[scipy.sparse.csr_matrix, scipy.sparse.csr_matrix]
+
+   Build a spatial neighbor graph from transcript coordinates.
+
+   :param cell_df: DataFrame containing transcript information of input cell.
+   :type cell_df: DataFrame
+   :param radius: Search radius for neighbors. If provided, radius_neighbors_graph is used.
+                  Default is 2.
+   :type radius: int, optional
+   :param n_neighbors: Number of nearest neighbors to consider when radius is None.
+                       Default is 20.
+   :type n_neighbors: int, optional
+   :param metric: Distance metric to use. Default is "euclidean".
+   :type metric: str, optional
+   :param mode: Type of graph returned. "connectivity" returns binary adjacency matrix,
+                "distance" returns distance values. Default is "connectivity".
+   :type mode: str, optional
+   :param x_key: Column name for x coordinates in cell_df. Default is "x_pos".
+   :type x_key: str, optional
+   :param y_key: Column name for y coordinates in cell_df. Default is "y_pos".
+   :type y_key: str, optional
+   :param z_key: Column name for z coordinates in cell_df. If None, 2D coordinates are used.
+                 Default is None.
+   :type z_key: str, optional
+   :param n_jobs: Number of parallel jobs for neighbor computation. Default is 1.
+   :type n_jobs: int, optional
+   :param include_self: Whether to include self-loops in the graph. Default is False.
+   :type include_self: bool, optional
+
+   :returns: Sparse adjacency matrix in CSR format representing the neighbor graph.
+   :rtype: tuple[csr_matrix, csr_matrix]
+
+
+.. py:function:: get_gene_subclusters(genes: Sequence[Any], clustering_model: Any) -> dict
+
+   Group genes by their assigned subclusters from a clustering model.
+
+   :param genes: Array of gene names or identifiers.
+   :type genes: array-like
+   :param clustering_model: Fitted clustering model with `labels_` attribute containing cluster assignments.
+   :type clustering_model: object
+
+   :returns: Dictionary mapping subcluster IDs to lists of genes in that subcluster.
+             Keys are unique cluster labels, values are lists of gene names.
+   :rtype: dict
+
+
+.. py:function:: sparse_mx_to_torch_sparse_tensor(sparse_mx: scipy.sparse.spmatrix)
+
+   Convert a scipy sparse matrix to a PyTorch sparse tensor.
+
+   :param sparse_mx: Input sparse matrix (converted to COO format internally).
+   :type sparse_mx: scipy.sparse matrix
+
+   :returns: Sparse tensor in COO format with float32 dtype.
+   :rtype: torch.sparse.FloatTensor
+
+
+.. py:function:: get_tree_linkage(model: Any) -> numpy.ndarray
+
+   Generate a linkage matrix from a hierarchical clustering model.
+
+   :param model: Fitted hierarchical clustering model with `children_`, `distances_`,
+                 and `labels_` attributes.
+   :type model: object
+
+   :returns: Linkage matrix
+   :rtype: ndarray
+
+
+.. py:function:: compute_figure_size(adata: anndata.AnnData, cells: Sequence[Any], n_rows: int, n_cols: int, scale: float = 0.1, col_padding: float = 1, row_padding: float = 20, boundary_padding: float = 1, cell_key: str = 'cell', x_key: str = 'x', y_key: str = 'y') -> Tuple[float, float, List[float], List[float], List[List[float]], List[List[float]], float, float]
+
+   Calculate optimized figure dimensions for multi-panel subplot layouts.
+
+   :param adata: Annotated data object containing observation metadata and coordinates.
+   :type adata: AnnData
+   :param cells: List of cell identifiers to include in the layout, ordered by subplot position.
+   :type cells: array-like
+   :param n_rows: Number of rows in the subplot grid.
+   :type n_rows: int
+   :param n_cols: Number of columns in the subplot grid.
+   :type n_cols: int
+   :param scale: Scale factor applied to subplot dimensions. Default is 0.1.
+   :type scale: float, optional
+   :param col_padding: Horizontal padding between columns. Default is 1.
+   :type col_padding: float, optional
+   :param row_padding: Vertical padding between rows. Default is 20.
+   :type row_padding: float, optional
+   :param boundary_padding: Padding around data boundaries. If < 1, treated as relative (fraction of range);
+                            if >= 1, treated as absolute units. Default is 1.
+   :type boundary_padding: float or int, optional
+   :param cell_key: Column name in adata.obs for cell grouping. Default is "cell".
+   :type cell_key: str, optional
+   :param x_key: Column name in adata.obs for x coordinates. Default is "x".
+   :type x_key: str, optional
+   :param y_key: Column name in adata.obs for y coordinates. Default is "y".
+   :type y_key: str, optional
+
+   :returns: A tuple of 8 elements:
+             - fig_width : float - Final figure width in inches
+             - fig_height : float - Final figure height in inches
+             - row_heights : list[float] - Height of each row
+             - col_widths : list[float] - Width of each column
+             - subplot_heights : list[list[float]] - Height of each subplot
+             - subplot_widths : list[list[float]] - Width of each subplot
+             - col_padding : float - Applied column padding
+             - row_padding : float - Applied row padding
+   :rtype: tuple
+
+

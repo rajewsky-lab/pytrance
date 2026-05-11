@@ -1,0 +1,34 @@
+pytrance.models.DGI.layers.gcn
+==============================
+
+.. py:module:: pytrance.models.DGI.layers.gcn
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   pytrance.models.DGI.layers.gcn.GCN
+
+
+Module Contents
+---------------
+
+.. py:class:: GCN(in_ft, out_ft, act='sigmoid', bias=True)
+
+   Bases: :py:obj:`torch.nn.Module`
+
+
+   .. py:attribute:: out_features
+
+
+   .. py:attribute:: fc
+
+
+   .. py:method:: weights_init(m)
+
+
+   .. py:method:: forward(seq, adj, sparse=False)
+
+

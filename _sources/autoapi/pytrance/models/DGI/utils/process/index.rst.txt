@@ -1,0 +1,82 @@
+pytrance.models.DGI.utils.process
+=================================
+
+.. py:module:: pytrance.models.DGI.utils.process
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pytrance.models.DGI.utils.process.parse_skipgram
+   pytrance.models.DGI.utils.process.process_tu
+   pytrance.models.DGI.utils.process.micro_f1
+   pytrance.models.DGI.utils.process.adj_to_bias
+   pytrance.models.DGI.utils.process.parse_index_file
+   pytrance.models.DGI.utils.process.sample_mask
+   pytrance.models.DGI.utils.process.load_data
+   pytrance.models.DGI.utils.process.sparse_to_tuple
+   pytrance.models.DGI.utils.process.standardize_data
+   pytrance.models.DGI.utils.process.preprocess_features
+   pytrance.models.DGI.utils.process.normalize_adj
+   pytrance.models.DGI.utils.process.preprocess_adj
+   pytrance.models.DGI.utils.process.sparse_mx_to_torch_sparse_tensor
+
+
+Module Contents
+---------------
+
+.. py:function:: parse_skipgram(fname)
+
+.. py:function:: process_tu(data, nb_nodes)
+
+.. py:function:: micro_f1(logits, labels)
+
+.. py:function:: adj_to_bias(adj, sizes, nhood=1)
+
+.. py:function:: parse_index_file(filename)
+
+   Parse index file.
+
+
+.. py:function:: sample_mask(idx, l)
+
+   Create mask.
+
+
+.. py:function:: load_data(dataset_str)
+
+   Load data.
+
+
+.. py:function:: sparse_to_tuple(sparse_mx, insert_batch=False)
+
+   Convert sparse matrix to tuple representation.
+
+
+.. py:function:: standardize_data(f, train_mask)
+
+   Standardize feature matrix and convert to tuple representation
+
+
+.. py:function:: preprocess_features(features)
+
+   Row-normalize feature matrix and convert to tuple representation
+
+
+.. py:function:: normalize_adj(adj)
+
+   Symmetrically normalize adjacency matrix.
+
+
+.. py:function:: preprocess_adj(adj)
+
+   Preprocessing of adjacency matrix for simple GCN model and conversion to tuple representation.
+
+
+.. py:function:: sparse_mx_to_torch_sparse_tensor(sparse_mx)
+
+   Convert a scipy sparse matrix to a torch sparse tensor.
+
+

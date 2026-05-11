@@ -1,0 +1,20 @@
+pytrance.models
+===============
+
+.. py:module:: pytrance.models
+
+.. autoapi-nested-parse::
+
+   Models for pyTrance.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/pytrance/models/DGI/index
+
+
