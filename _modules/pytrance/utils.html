@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pytrance.utils &#8212; pyTrance 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pytrance/utils';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyTrance 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pytrance.utils</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pytrance.utils</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">anndata</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csr_matrix</span><span class="p">,</span> <span class="n">spmatrix</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">kneighbors_graph</span><span class="p">,</span> <span class="n">radius_neighbors_graph</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Size</span><span class="p">,</span> <span class="n">from_numpy</span><span class="p">,</span> <span class="n">sparse_coo_tensor</span>
+
+
+<div class="viewcode-block" id="get_neighbors">
+<a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.get_neighbors">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_neighbors</span><span class="p">(</span>
+    <span class="n">cell_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">radius</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;connectivity&quot;</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="o">=</span><span class="s2">&quot;x_pos&quot;</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="o">=</span><span class="s2">&quot;y_pos&quot;</span><span class="p">,</span>
+    <span class="n">z_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">include_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">csr_matrix</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a spatial neighbor graph from transcript coordinates.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cell_df : DataFrame</span>
+<span class="sd">        DataFrame containing transcript information of input cell.</span>
+<span class="sd">    radius : int, optional</span>
+<span class="sd">        Search radius for neighbors. If provided, radius_neighbors_graph is used.</span>
+<span class="sd">        Default is 2.</span>
+<span class="sd">    n_neighbors : int, optional</span>
+<span class="sd">        Number of nearest neighbors to consider when radius is None.</span>
+<span class="sd">        Default is 20.</span>
+<span class="sd">    metric : str, optional</span>
+<span class="sd">        Distance metric to use. Default is &quot;euclidean&quot;.</span>
+<span class="sd">    mode : str, optional</span>
+<span class="sd">        Type of graph returned. &quot;connectivity&quot; returns binary adjacency matrix,</span>
+<span class="sd">        &quot;distance&quot; returns distance values. Default is &quot;connectivity&quot;.</span>
+<span class="sd">    x_key : str, optional</span>
+<span class="sd">        Column name for x coordinates in cell_df. Default is &quot;x_pos&quot;.</span>
+<span class="sd">    y_key : str, optional</span>
+<span class="sd">        Column name for y coordinates in cell_df. Default is &quot;y_pos&quot;.</span>
+<span class="sd">    z_key : str, optional</span>
+<span class="sd">        Column name for z coordinates in cell_df. If None, 2D coordinates are used.</span>
+<span class="sd">        Default is None.</span>
+<span class="sd">    n_jobs : int, optional</span>
+<span class="sd">        Number of parallel jobs for neighbor computation. Default is 1.</span>
+<span class="sd">    include_self : bool, optional</span>
+<span class="sd">        Whether to include self-loops in the graph. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple[csr_matrix, csr_matrix]</span>
+<span class="sd">        Sparse adjacency matrix in CSR format representing the neighbor graph.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">z_key</span><span class="p">:</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">z_key</span><span class="p">])</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">radius</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># build graph based on radius/distance</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">radius_neighbors_graph</span><span class="p">(</span>
+            <span class="n">coords</span><span class="p">,</span>
+            <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+            <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
+            <span class="n">include_self</span><span class="o">=</span><span class="n">include_self</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># build graph based on nearest neighbors</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">kneighbors_graph</span><span class="p">(</span>
+            <span class="n">coords</span><span class="p">,</span>
+            <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+            <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+            <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
+            <span class="n">include_self</span><span class="o">=</span><span class="n">include_self</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">graph</span></div>
+
+
+
+<div class="viewcode-block" id="get_gene_subclusters">
+<a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.get_gene_subclusters">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_gene_subclusters</span><span class="p">(</span><span class="n">genes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">clustering_model</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Group genes by their assigned subclusters from a clustering model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    genes : array-like</span>
+<span class="sd">        Array of gene names or identifiers.</span>
+<span class="sd">    clustering_model : object</span>
+<span class="sd">        Fitted clustering model with `labels_` attribute containing cluster assignments.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dictionary mapping subcluster IDs to lists of genes in that subcluster.</span>
+<span class="sd">        Keys are unique cluster labels, values are lists of gene names.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cluster_gene_groups_subset</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">subcluster</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">clustering_model</span><span class="o">.</span><span class="n">labels_</span><span class="p">):</span>
+        <span class="n">cluster_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">clustering_model</span><span class="o">.</span><span class="n">labels_</span> <span class="o">==</span> <span class="n">subcluster</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">cluster_genes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">genes</span><span class="p">)[</span><span class="n">cluster_idxs</span><span class="p">]</span>
+        <span class="n">cluster_gene_groups_subset</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">subcluster</span><span class="p">)]</span> <span class="o">=</span> <span class="n">cluster_genes</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+        
+    <span class="k">return</span> <span class="n">cluster_gene_groups_subset</span></div>
+
+
+
+<span class="c1"># from DGI</span>
+<div class="viewcode-block" id="sparse_mx_to_torch_sparse_tensor">
+<a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.sparse_mx_to_torch_sparse_tensor">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">sparse_mx_to_torch_sparse_tensor</span><span class="p">(</span><span class="n">sparse_mx</span><span class="p">:</span> <span class="n">spmatrix</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a scipy sparse matrix to a PyTorch sparse tensor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    sparse_mx : scipy.sparse matrix</span>
+<span class="sd">        Input sparse matrix (converted to COO format internally).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    torch.sparse.FloatTensor</span>
+<span class="sd">        Sparse tensor in COO format with float32 dtype.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sparse_mx</span> <span class="o">=</span> <span class="n">sparse_mx</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">sparse_mx</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">sparse_mx</span><span class="o">.</span><span class="n">col</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">from_numpy</span><span class="p">(</span><span class="n">sparse_mx</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">Size</span><span class="p">(</span><span class="n">sparse_mx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">sparse_coo_tensor</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_tree_linkage">
+<a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.get_tree_linkage">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_tree_linkage</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a linkage matrix from a hierarchical clustering model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : object</span>
+<span class="sd">        Fitted hierarchical clustering model with `children_`, `distances_`,</span>
+<span class="sd">        and `labels_` attributes.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray</span>
+<span class="sd">        Linkage matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># create the counts of samples under each node</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">merge</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="p">):</span>
+        <span class="n">current_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">child_idx</span> <span class="ow">in</span> <span class="n">merge</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">child_idx</span> <span class="o">&lt;</span> <span class="n">n_samples</span><span class="p">:</span>
+                <span class="n">current_count</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># leaf node</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current_count</span> <span class="o">+=</span> <span class="n">counts</span><span class="p">[</span><span class="n">child_idx</span> <span class="o">-</span> <span class="n">n_samples</span><span class="p">]</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_count</span>
+
+    <span class="n">linkage_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">distances_</span><span class="p">,</span> <span class="n">counts</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">linkage_matrix</span></div>
+
+
+
+<div class="viewcode-block" id="compute_figure_size">
+<a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.compute_figure_size">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_figure_size</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">:</span> <span class="n">AnnData</span><span class="p">,</span>
+    <span class="n">cells</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
+    <span class="n">n_rows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_cols</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">col_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">row_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">boundary_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">cell_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cell&quot;</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+    <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+    <span class="nb">float</span><span class="p">,</span>
+    <span class="nb">float</span><span class="p">,</span>
+<span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate optimized figure dimensions for multi-panel subplot layouts.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    adata : AnnData</span>
+<span class="sd">        Annotated data object containing observation metadata and coordinates.</span>
+<span class="sd">    cells : array-like</span>
+<span class="sd">        List of cell identifiers to include in the layout, ordered by subplot position.</span>
+<span class="sd">    n_rows : int</span>
+<span class="sd">        Number of rows in the subplot grid.</span>
+<span class="sd">    n_cols : int</span>
+<span class="sd">        Number of columns in the subplot grid.</span>
+<span class="sd">    scale : float, optional</span>
+<span class="sd">        Scale factor applied to subplot dimensions. Default is 0.1.</span>
+<span class="sd">    col_padding : float, optional</span>
+<span class="sd">        Horizontal padding between columns. Default is 1.</span>
+<span class="sd">    row_padding : float, optional</span>
+<span class="sd">        Vertical padding between rows. Default is 20.</span>
+<span class="sd">    boundary_padding : float or int, optional</span>
+<span class="sd">        Padding around data boundaries. If &lt; 1, treated as relative (fraction of range);</span>
+<span class="sd">        if &gt;= 1, treated as absolute units. Default is 1.</span>
+<span class="sd">    cell_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for cell grouping. Default is &quot;cell&quot;.</span>
+<span class="sd">    x_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for x coordinates. Default is &quot;x&quot;.</span>
+<span class="sd">    y_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for y coordinates. Default is &quot;y&quot;.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        A tuple of 8 elements:</span>
+<span class="sd">        - fig_width : float - Final figure width in inches</span>
+<span class="sd">        - fig_height : float - Final figure height in inches</span>
+<span class="sd">        - row_heights : list[float] - Height of each row</span>
+<span class="sd">        - col_widths : list[float] - Width of each column</span>
+<span class="sd">        - subplot_heights : list[list[float]] - Height of each subplot</span>
+<span class="sd">        - subplot_widths : list[list[float]] - Width of each subplot</span>
+<span class="sd">        - col_padding : float - Applied column padding</span>
+<span class="sd">        - row_padding : float - Applied row padding</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># max figure size scales with the grid dimensions (cols -&gt; width, rows -&gt; height)</span>
+    <span class="n">max_fig_width</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="mi">5</span>
+    <span class="n">max_fig_height</span> <span class="o">=</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="mi">5</span>
+
+    <span class="n">x_ranges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y_ranges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">adata_cell_grouped</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cell_key</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
+        <span class="n">x_ranges</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="n">y_ranges</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">):</span>
+            <span class="n">cell_df</span> <span class="o">=</span> <span class="n">adata_cell_grouped</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">cells</span><span class="p">[</span><span class="n">cell</span><span class="p">])</span>
+            <span class="n">x_ranges</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+            <span class="n">y_ranges</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+            <span class="n">cell</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Step 1: Calculate natural subplot sizes (scaled by `scale`), accounting for boundary padding</span>
+    <span class="c1"># boundary_padding can be absolute (&gt;=1) or relative (&lt;1)</span>
+    <span class="n">subplot_widths</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">subplot_heights</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x_ranges</span><span class="p">):</span>
+        <span class="n">subplot_widths</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="n">subplot_heights</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+        <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+            <span class="n">x_range</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span>
+            <span class="n">y_range</span> <span class="o">=</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_ranges</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># Apply boundary padding to ranges</span>
+            <span class="k">if</span> <span class="n">boundary_padding</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">x_pad</span> <span class="o">=</span> <span class="n">x_range</span> <span class="o">*</span> <span class="n">boundary_padding</span>
+                <span class="n">y_pad</span> <span class="o">=</span> <span class="n">y_range</span> <span class="o">*</span> <span class="n">boundary_padding</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">x_pad</span> <span class="o">=</span> <span class="n">boundary_padding</span>
+                <span class="n">y_pad</span> <span class="o">=</span> <span class="n">boundary_padding</span>
+            <span class="c1"># Calculate subplot size with padding included</span>
+            <span class="n">subplot_widths</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x_range</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x_pad</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+            <span class="n">subplot_heights</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">y_range</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y_pad</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+
+    <span class="n">row_heights</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">subplot_heights</span><span class="p">]</span>
+    <span class="n">col_widths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">subplot_widths</span><span class="p">)]</span>
+
+    <span class="c1"># Step 2: Compute natural figure size including padding</span>
+    <span class="n">natural_fig_width</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">col_widths</span><span class="p">)</span> <span class="o">+</span> <span class="n">col_padding</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_cols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">natural_fig_height</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">row_heights</span><span class="p">)</span> <span class="o">+</span> <span class="n">row_padding</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Step 3: Compute downscale factor</span>
+    <span class="n">width_scale_factor</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">max_fig_width</span> <span class="o">/</span> <span class="n">natural_fig_width</span> <span class="k">if</span> <span class="n">natural_fig_width</span> <span class="o">&gt;</span> <span class="n">max_fig_width</span> <span class="k">else</span> <span class="mf">1.0</span>
+    <span class="p">)</span>
+    <span class="n">height_scale_factor</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">max_fig_height</span> <span class="o">/</span> <span class="n">natural_fig_height</span>
+        <span class="k">if</span> <span class="n">natural_fig_height</span> <span class="o">&gt;</span> <span class="n">max_fig_height</span>
+        <span class="k">else</span> <span class="mf">1.0</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Choose the most constraining factor</span>
+    <span class="n">downscale</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">width_scale_factor</span><span class="p">,</span> <span class="n">height_scale_factor</span><span class="p">)</span>
+
+    <span class="c1"># Step 3: Apply downscale to subplot sizes and padding</span>
+    <span class="n">subplot_widths</span> <span class="o">=</span> <span class="p">[[</span><span class="n">w</span> <span class="o">*</span> <span class="n">downscale</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">subplot_widths</span><span class="p">]</span>
+    <span class="n">subplot_heights</span> <span class="o">=</span> <span class="p">[[</span><span class="n">h</span> <span class="o">*</span> <span class="n">downscale</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">subplot_heights</span><span class="p">]</span>
+
+    <span class="n">row_heights</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">subplot_heights</span><span class="p">]</span>
+    <span class="n">row_padding</span> <span class="o">*=</span> <span class="n">downscale</span>
+    <span class="n">col_padding</span> <span class="o">*=</span> <span class="n">downscale</span>
+
+    <span class="c1"># keep per-column width for backwards compatibility</span>
+    <span class="n">col_widths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">subplot_widths</span><span class="p">)]</span>
+
+    <span class="c1"># Figure size is based on the widest row (since columns can vary per row)</span>
+    <span class="n">row_total_widths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="o">+</span> <span class="n">col_padding</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_cols</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">subplot_widths</span><span class="p">]</span>
+    <span class="n">fig_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">row_total_widths</span><span class="p">)</span>
+    <span class="n">fig_height</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">row_heights</span><span class="p">)</span> <span class="o">+</span> <span class="n">row_padding</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">fig_width</span><span class="p">,</span>
+        <span class="n">fig_height</span><span class="p">,</span>
+        <span class="n">row_heights</span><span class="p">,</span>
+        <span class="n">col_widths</span><span class="p">,</span>
+        <span class="n">subplot_heights</span><span class="p">,</span>
+        <span class="n">subplot_widths</span><span class="p">,</span>
+        <span class="n">col_padding</span><span class="p">,</span>
+        <span class="n">row_padding</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

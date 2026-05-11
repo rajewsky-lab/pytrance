@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. prepare data for training and analysis &#8212; pyTrance 0.1.0 documentation</title>
+    <title>Full pyTrance tutorial on a U2OS MERFISH dataset &#8212; pyTrance 0.1.0 documentation</title>
   
   
   
@@ -299,13 +299,7 @@
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. prepare data for training and analysis</a></li>
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Full pyTrance tutorial on a U2OS MERFISH dataset</a></li>
 </ul>
 </div>
 </nav></div>
@@ -349,7 +343,7 @@
     
     <li class="breadcrumb-item"><a href="../tutorials.html" class="nav-link">Tutorials</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">1. prepare data for training and analysis</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Full pyTrance tutorial on a U2OS MERFISH dataset</span></li>
   </ul>
 </nav>
 </div>
@@ -366,7 +360,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>Before running the tutorial, make sure you downloaded the u2os_merfish.h5ad file from https://doi.org/10.6084/m9.figshare.c.6564043.</p>
+  <section id="full-pytrance-tutorial-on-a-u2os-merfish-dataset">
+<h1>Full pyTrance tutorial on a U2OS MERFISH dataset<a class="headerlink" href="#full-pytrance-tutorial-on-a-u2os-merfish-dataset" title="Link to this heading">#</a></h1>
+<p>Before running the tutorial, make sure you downloaded the u2os_merfish.h5ad file from https://doi.org/10.6084/m9.figshare.c.6564043.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -382,58 +378,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">pytrance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pt</span>
 
 <span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">808</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> 
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pytrance</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pt</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> 
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">808</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;pyTrance: subcellular spatial transcriptomics analysis.&quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.cell_score</span><span class="w"> </span><span class="kn">import</span> <span class="n">clq</span><span class="p">,</span> <span class="n">clq_pairwise</span><span class="p">,</span> <span class="n">clq_significance</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">data</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.gnn</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_epoch</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">cell_score</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">spmatrix</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_neighbors</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="k">def</span><span class="w"> </span><span class="nf">clq_pairwise</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">adata</span><span class="p">:</span> <span class="n">AnnData</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">genes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">26</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]:</span>
-<span class="g g-Whitespace">     </span><span class="mi">28</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Compute co-localization quotient (CLQ) scores between gene pairs.</span>
-<span class="g g-Whitespace">     </span><span class="mi">29</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)     67             to aggregated normalized CLQ scores.</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">pytrance</span><span class="o">/</span><span class="n">utils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csr_matrix</span><span class="p">,</span> <span class="n">spmatrix</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">kneighbors_graph</span><span class="p">,</span> <span class="n">radius_neighbors_graph</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Size</span><span class="p">,</span> <span class="n">from_numpy</span><span class="p">,</span> <span class="n">sparse_coo_tensor</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">def</span><span class="w"> </span><span class="nf">get_neighbors</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">cell_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">radius</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">21</span>     <span class="n">include_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">csr_matrix</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Build a spatial neighbor graph from transcript coordinates.</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)     55         Sparse adjacency matrix in CSR format representing the neighbor graph.</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span><span class="sd">     &quot;&quot;&quot;</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;torch&#39;
 </pre></div>
 </div>
 </div>
@@ -466,7 +410,7 @@ In general, we recommend to set a threshold for minimum gene and cell counts to 
 </div>
 </div>
 <section id="prepare-data-for-training-and-analysis">
-<h1>1. prepare data for training and analysis<a class="headerlink" href="#prepare-data-for-training-and-analysis" title="Link to this heading">#</a></h1>
+<h2>1. prepare data for training and analysis<a class="headerlink" href="#prepare-data-for-training-and-analysis" title="Link to this heading">#</a></h2>
 <p>The data has to be in anndata format with observations corresponding to single transcripts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -517,15 +461,15 @@ In general, we recommend to set a threshold for minimum gene and cell counts to 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/lstreng/miniforge3/envs/pytrance/lib/python3.12/functools.py:912: ImplicitModificationWarning: Transforming to str index.
-  return dispatch(args[0].__class__)(*args, **kw)
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 664116 × 135
     obs: &#39;x&#39;, &#39;y&#39;, &#39;gene&#39;, &#39;cell&#39;, &#39;nucleus&#39;, &#39;batch&#39;, &#39;cell_encoded&#39;, &#39;id&#39;
     obsm: &#39;spatial&#39;
 median transcripts per cell: 13935.5
 mean transcripts per cell: 13835.75
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/lstreng/miniforge3/envs/pytrance/lib/python3.12/functools.py:912: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
 </pre></div>
 </div>
 </div>
@@ -552,7 +496,7 @@ mean transcripts per cell: 13835.75
 </div>
 </section>
 <section id="create-model-and-training-data">
-<h1>2. create model and training data<a class="headerlink" href="#create-model-and-training-data" title="Link to this heading">#</a></h1>
+<h2>2. create model and training data<a class="headerlink" href="#create-model-and-training-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pytrance.models.DGI.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">DGI</span>
@@ -616,22 +560,20 @@ mean transcripts per cell: 13835.75
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2848405/3924042032.py:14: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
-  cell_indices = adata.obs.groupby(cell_key).indices
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>preparing data loader ... 
 setting up torch data set ...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 48/48 [00:11&lt;00:00,  4.19it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_3205694/3924042032.py:14: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  cell_indices = adata.obs.groupby(cell_key).indices
+100%|██████████| 48/48 [00:13&lt;00:00,  3.62it/s]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="train-model">
-<h1>3. train model<a class="headerlink" href="#train-model" title="Link to this heading">#</a></h1>
+<h2>3. train model<a class="headerlink" href="#train-model" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train GNN</span>
@@ -650,74 +592,27 @@ setting up torch data set ...
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Save results to: /data/rajewsky/home/lstreng/pyTrance/docs/tutorials/
+Epoch: 0	train loss: 0.645209661215564	passed time: 136.0s
+Epoch: 1	train loss: 0.5521971072673877	passed time: 138.0s
+Epoch: 2	train loss: 0.48031415530981314	passed time: 135.0s
+Epoch: 3	train loss: 0.4180034554236979	passed time: 134.0s
+Epoch: 4	train loss: 0.3670976556702395	passed time: 135.0s
+Epoch: 5	train loss: 0.3258195470078575	passed time: 135.0s
+Epoch: 6	train loss: 0.2935908392158737	passed time: 134.0s
+Epoch: 7	train loss: 0.2681542533616321	passed time: 134.0s
+Epoch: 8	train loss: 0.2478434284421159	passed time: 135.0s
+Epoch: 9	train loss: 0.23078944892299624	passed time: 133.0s
+saving embeddings ...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 0	train loss: 0.6282734141465556	passed time: 126.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 1	train loss: 0.5567959273101437	passed time: 126.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 2	train loss: 0.49391883019263927	passed time: 127.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 3	train loss: 0.43270422288492427	passed time: 127.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 4	train loss: 0.3763238627763502	passed time: 126.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 5	train loss: 0.32953880590327583	passed time: 129.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 6	train loss: 0.2938799153519791	passed time: 127.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 7	train loss: 0.265246765660542	passed time: 127.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 8	train loss: 0.2425448825359305	passed time: 127.0s
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                   
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 9	train loss: 0.2242569216199069	passed time: 127.0s
-saving embeddings ... 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="aggregate-and-cluster-embeddings">
-<h1>4. aggregate and cluster embeddings<a class="headerlink" href="#aggregate-and-cluster-embeddings" title="Link to this heading">#</a></h1>
+<h2>4. aggregate and cluster embeddings<a class="headerlink" href="#aggregate-and-cluster-embeddings" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load pre-computed embeddings</span>
@@ -737,7 +632,7 @@ saving embeddings ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 135/135 [00:00&lt;00:00, 1711.36it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 135/135 [00:00&lt;00:00, 1663.04it/s]
 </pre></div>
 </div>
 </div>
@@ -764,7 +659,7 @@ saving embeddings ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f4aecd7997e92ee27d59b35284020b4cd870c5b884829f367319f41dcad7c275.png" src="../_images/f4aecd7997e92ee27d59b35284020b4cd870c5b884829f367319f41dcad7c275.png" />
+<img alt="../_images/730c21019e2b218dadfc138e9e65984eb55c846ebf8c4c3c0656b49e8ff20f6c.png" src="../_images/730c21019e2b218dadfc138e9e65984eb55c846ebf8c4c3c0656b49e8ff20f6c.png" />
 </div>
 </div>
 <p>For leiden fine tuning, we recommend to start with the default resolution and iteratively refine it by first exploring the localization patterns visually (step 5). If multiple clusters show the same pattern you might want to decrease the resolution for a more coarse clustering. Additionally, you can look for subclusters in the embedding heatmap (step 7), which indicates that the initial clustering is too coarse.<br />
@@ -785,14 +680,14 @@ In our experience, clusters often correspond to cell compartments in which the R
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>detected 9 clusters
+</pre></div>
+</div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/lstreng/miniforge3/envs/pytrance/lib/python3.12/functools.py:912: ImplicitModificationWarning: Transforming to str index.
   return dispatch(args[0].__class__)(*args, **kw)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>detected 8 clusters
-</pre></div>
-</div>
-<img alt="../_images/093434c94ae53a72b2b5e917ae7200157d902af20acdf4330ae4dc44aa1c42dd.png" src="../_images/093434c94ae53a72b2b5e917ae7200157d902af20acdf4330ae4dc44aa1c42dd.png" />
+<img alt="../_images/7741c98f5aa8d60efc3888393de427f9a3a091b94885b50b308e9a82712fa7a2.png" src="../_images/7741c98f5aa8d60efc3888393de427f9a3a091b94885b50b308e9a82712fa7a2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -819,12 +714,12 @@ In our experience, clusters often correspond to cell compartments in which the R
   return dispatch(args[0].__class__)(*args, **kw)
 </pre></div>
 </div>
-<img alt="../_images/6e3f370f4793c586692407766659e9dfa4bf855d0b5597a80d1be8d860d2d03e.png" src="../_images/6e3f370f4793c586692407766659e9dfa4bf855d0b5597a80d1be8d860d2d03e.png" />
+<img alt="../_images/873285f6d78965a238adf87ea949cfffbe4e336d8f36a877c36d77bc88d428cc.png" src="../_images/873285f6d78965a238adf87ea949cfffbe4e336d8f36a877c36d77bc88d428cc.png" />
 </div>
 </div>
 </section>
 <section id="explore-clusters-visually">
-<h1>5. explore clusters visually<a class="headerlink" href="#explore-clusters-visually" title="Link to this heading">#</a></h1>
+<h2>5. explore clusters visually<a class="headerlink" href="#explore-clusters-visually" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster</span> <span class="o">=</span> <span class="mi">2</span>
@@ -868,13 +763,13 @@ In our experience, clusters often correspond to cell compartments in which the R
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a533323cf3a582cf4cc254f3f772c98f01ff56b0c230b9c37da4d4cf50a59a93.png" src="../_images/a533323cf3a582cf4cc254f3f772c98f01ff56b0c230b9c37da4d4cf50a59a93.png" />
-<img alt="../_images/254c8a9dec472cbd6153d99d131d99e80b43c2ce965573b01eb3438fe0196348.png" src="../_images/254c8a9dec472cbd6153d99d131d99e80b43c2ce965573b01eb3438fe0196348.png" />
+<img alt="../_images/273170c4e930925cb57813d602a43af6ead9ab2f46933c6b294c0db1214e3f1f.png" src="../_images/273170c4e930925cb57813d602a43af6ead9ab2f46933c6b294c0db1214e3f1f.png" />
+<img alt="../_images/3d12d46bf0bd8aeb445422cca99b92a27e5a151270d4bdf324ce6a2b7c747685.png" src="../_images/3d12d46bf0bd8aeb445422cca99b92a27e5a151270d4bdf324ce6a2b7c747685.png" />
 </div>
 </div>
 </section>
 <section id="compute-clq-scores">
-<h1>6. compute CLQ scores<a class="headerlink" href="#compute-clq-scores" title="Link to this heading">#</a></h1>
+<h2>6. compute CLQ scores<a class="headerlink" href="#compute-clq-scores" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gene_set</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">clustering_algo</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -899,23 +794,23 @@ In our experience, clusters often correspond to cell compartments in which the R
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing CLQs for gene set:
-[&#39;AGO3&#39;, &#39;ARL10&#39;, &#39;BUB3&#39;, &#39;FZD5&#39;, &#39;MALAT1&#39;, &#39;MCF2L&#39;, &#39;NKTR&#39;, &#39;POLQ&#39;, &#39;RAD51D&#39;, &#39;RNF152&#39;, &#39;RP4-671O14.6&#39;, &#39;SKP1&#39;, &#39;SLC5A3&#39;, &#39;SOD2&#39;, &#39;STARD9&#39;, &#39;TMOD2&#39;, &#39;TSPAN3&#39;, &#39;UMPS&#39;, &#39;XKR5&#39;, &#39;YIPF4&#39;, &#39;ZBTB43&#39;]
+[&#39;AGO3&#39;, &#39;ARL10&#39;, &#39;BUB3&#39;, &#39;FZD5&#39;, &#39;MALAT1&#39;, &#39;MCF2L&#39;, &#39;NKTR&#39;, &#39;POLQ&#39;, &#39;RAD51D&#39;, &#39;RNF152&#39;, &#39;RP4-671O14.6&#39;, &#39;SKP1&#39;, &#39;SLC5A3&#39;, &#39;SOD2&#39;, &#39;SRRM2&#39;, &#39;STARD9&#39;, &#39;TMOD2&#39;, &#39;TSPAN3&#39;, &#39;UMPS&#39;, &#39;XKR5&#39;, &#39;YIPF4&#39;, &#39;ZBTB43&#39;]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cells: 100%|██████████| 3/3 [00:04&lt;00:00,  1.51s/it]
-cells: 100%|██████████| 9/9 [00:07&lt;00:00,  1.21it/s]
-cells: 100%|██████████| 9/9 [00:08&lt;00:00,  1.11it/s]
-cells: 100%|██████████| 9/9 [00:16&lt;00:00,  1.88s/it]
-cells: 100%|██████████| 9/9 [00:20&lt;00:00,  2.27s/it]
-cells: 100%|██████████| 9/9 [00:20&lt;00:00,  2.28s/it]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cells: 100%|██████████| 3/3 [00:07&lt;00:00,  2.57s/it]
+cells: 100%|██████████| 9/9 [00:11&lt;00:00,  1.31s/it]
+cells: 100%|██████████| 9/9 [00:13&lt;00:00,  1.49s/it]
+cells: 100%|██████████| 9/9 [00:31&lt;00:00,  3.50s/it]
+cells: 100%|██████████| 9/9 [00:34&lt;00:00,  3.81s/it]
+cells: 100%|██████████| 9/9 [00:37&lt;00:00,  4.15s/it]
 </pre></div>
 </div>
-<img alt="../_images/cb5b066e97cf33dbbf58b0d96a5ff17be2201f5206b5236048a12c24867192e5.png" src="../_images/cb5b066e97cf33dbbf58b0d96a5ff17be2201f5206b5236048a12c24867192e5.png" />
+<img alt="../_images/2e3dbd951a60b66ebf30501102b64a159a0cc8c82cdf9d16033377410fe4fadb.png" src="../_images/2e3dbd951a60b66ebf30501102b64a159a0cc8c82cdf9d16033377410fe4fadb.png" />
 </div>
 </div>
 </section>
 <section id="subclustering">
-<h1>7. subclustering<a class="headerlink" href="#subclustering" title="Link to this heading">#</a></h1>
+<h2>7. subclustering<a class="headerlink" href="#subclustering" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_pd_cluster</span> <span class="o">=</span> <span class="n">embeds_aggregated</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">clustering_algo</span><span class="p">]</span> <span class="o">==</span> <span class="n">cluster</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
@@ -926,7 +821,7 @@ cells: 100%|██████████| 9/9 [00:20&lt;00:00,  2.28s/it]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/34fcd6c935d68a3f64c92a86a7770b73e201e988d92cff0959fabfd4bc733c5e.png" src="../_images/34fcd6c935d68a3f64c92a86a7770b73e201e988d92cff0959fabfd4bc733c5e.png" />
+<img alt="../_images/840dbb303dbeef19d02799b29e73d3f312db7ac680453d3ddfaa1dceb743607f.png" src="../_images/840dbb303dbeef19d02799b29e73d3f312db7ac680453d3ddfaa1dceb743607f.png" />
 </div>
 </div>
 <p>The subclusters can be visually inferred from the heatmap above. To determine the <code class="docutils literal notranslate"><span class="pre">distance_threshold</span></code> that produces the desired subclusters it’s easiest to run the subclustering once with default parameters and take the threshold from the y-axis of the resulting plot. Alternatively you can also define a number of subclusters using the <code class="docutils literal notranslate"><span class="pre">n_subclusters</span></code> parameter.<br />
@@ -938,7 +833,7 @@ Here, the subcluster on the right could potentially be split even further.</p>
 
 <span class="n">cluster_gene_sets_subset</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">subcluster</span><span class="p">(</span><span class="n">corr_pd_cluster</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
                                             <span class="n">genes</span><span class="o">=</span><span class="n">gene_set</span><span class="p">,</span>
-                                            <span class="n">distance_threshold</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+                                            <span class="n">distance_threshold</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
                                             <span class="n">plot_tree</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                             <span class="n">gene_names_ordered</span><span class="o">=</span><span class="n">gene_names_ordered</span><span class="p">)</span>
 <span class="n">cluster_gene_sets_subset</span>
@@ -946,10 +841,9 @@ Here, the subcluster on the right could potentially be split even further.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/21c2255bb3153b8d02f68bfc699583e8e9d035b509f8f84bc4985d664af63f3f.png" src="../_images/21c2255bb3153b8d02f68bfc699583e8e9d035b509f8f84bc4985d664af63f3f.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: [&#39;RP4-671O14.6&#39;, &#39;SKP1&#39;, &#39;SLC5A3&#39;, &#39;SOD2&#39;, &#39;TMOD2&#39;, &#39;TSPAN3&#39;, &#39;YIPF4&#39;],
- 1: [&#39;MALAT1&#39;],
- 2: [&#39;AGO3&#39;,
+<img alt="../_images/5d18e090e0edf1b7decf087261f114261089a701b7f11b68cdd51b4ff327ef2c.png" src="../_images/5d18e090e0edf1b7decf087261f114261089a701b7f11b68cdd51b4ff327ef2c.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: [&#39;MALAT1&#39;, &#39;SKP1&#39;, &#39;SLC5A3&#39;, &#39;SOD2&#39;, &#39;TSPAN3&#39;],
+ 1: [&#39;AGO3&#39;,
   &#39;ARL10&#39;,
   &#39;BUB3&#39;,
   &#39;FZD5&#39;,
@@ -958,101 +852,19 @@ Here, the subcluster on the right could potentially be split even further.</p>
   &#39;POLQ&#39;,
   &#39;RAD51D&#39;,
   &#39;RNF152&#39;,
+  &#39;RP4-671O14.6&#39;,
+  &#39;SRRM2&#39;,
   &#39;STARD9&#39;,
+  &#39;TMOD2&#39;,
   &#39;UMPS&#39;,
   &#39;XKR5&#39;,
+  &#39;YIPF4&#39;,
   &#39;ZBTB43&#39;]}
 </pre></div>
 </div>
 </div>
 </div>
-<p>Subcluster with weak nuclear localization:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subcluster</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">gene_subset</span> <span class="o">=</span> <span class="n">cluster_gene_sets_subset</span><span class="p">[</span><span class="n">subcluster</span><span class="p">]</span>
-
-<span class="c1"># sample random cells</span>
-<span class="n">n_cells</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">RANDOM_SEED</span><span class="p">)</span>
-<span class="n">random_cells</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">cell_key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">n_cells</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot distribution of single transcripts</span>
-<span class="n">pt</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">cells_in_grid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="mi">4</span><span class="p">,</span>
-                    <span class="n">adata</span><span class="p">,</span>
-                    <span class="n">genes</span><span class="o">=</span><span class="n">gene_subset</span><span class="p">,</span>
-                    <span class="n">cell_list</span><span class="o">=</span><span class="n">random_cells</span><span class="p">,</span>
-                    <span class="n">cell_boundaries</span><span class="o">=</span><span class="n">cell_boundaries</span><span class="p">,</span>
-                    <span class="n">nucleus_boundaries</span><span class="o">=</span><span class="n">nucleus_boundaries</span><span class="p">,</span>
-                    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gene set&#39;</span><span class="p">,</span>
-                    <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span>
-                    <span class="p">)</span>
-
-<span class="c1"># plot transcript density of gene set</span>
-<span class="n">pt</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">cells_in_grid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
-                    <span class="mi">4</span><span class="p">,</span>
-                    <span class="n">adata</span><span class="p">,</span>
-                    <span class="n">genes</span><span class="o">=</span><span class="n">gene_subset</span><span class="p">,</span>
-                    <span class="n">cell_list</span><span class="o">=</span><span class="n">random_cells</span><span class="p">,</span>
-                    <span class="n">cell_boundaries</span><span class="o">=</span><span class="n">cell_boundaries</span><span class="p">,</span>
-                    <span class="n">nucleus_boundaries</span><span class="o">=</span><span class="n">nucleus_boundaries</span><span class="p">,</span>
-                    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gene set&#39;</span><span class="p">,</span>
-                    <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;histogram_relative&#39;</span><span class="p">,</span>
-                    <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/08c086bdda4255cb400ad8543e92be7929338f0ba2c55aa39b7722716366d549.png" src="../_images/08c086bdda4255cb400ad8543e92be7929338f0ba2c55aa39b7722716366d549.png" />
-<img alt="../_images/66bb052cbfa2eab02225ab779f0fbd1fe48474b992b4f6f57bf88ad9e33b4837.png" src="../_images/66bb052cbfa2eab02225ab779f0fbd1fe48474b992b4f6f57bf88ad9e33b4837.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute CLQs for each cluster for random cells</span>
-<span class="n">gene_subset</span> <span class="o">=</span> <span class="n">cluster_gene_sets_subset</span><span class="p">[</span><span class="n">subcluster</span><span class="p">]</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computing CLQs for gene set:</span><span class="se">\n</span><span class="si">{</span><span class="n">gene_subset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">clqs</span><span class="p">,</span> <span class="n">clqs_adjusted</span><span class="p">,</span> <span class="n">clqs_permuted</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">cell_score</span><span class="o">.</span><span class="n">clq</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span>
-                                                       <span class="n">genes</span><span class="o">=</span><span class="n">gene_subset</span><span class="p">,</span>
-                                                       <span class="n">graph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                                                       <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
-                                                       <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span>
-                                                       <span class="n">n_permutations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-                                                       <span class="n">seed</span><span class="o">=</span><span class="n">RANDOM_SEED</span><span class="p">,</span> 
-                                                       <span class="n">use_obs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                                       <span class="n">n_processes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                                                       <span class="n">z_key</span><span class="o">=</span><span class="kc">None</span>
-                                                       <span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">clqs_adjusted</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing CLQs for gene set:
-[&#39;AGO3&#39;, &#39;ARL10&#39;, &#39;BUB3&#39;, &#39;FZD5&#39;, &#39;MCF2L&#39;, &#39;NKTR&#39;, &#39;POLQ&#39;, &#39;RAD51D&#39;, &#39;RNF152&#39;, &#39;STARD9&#39;, &#39;UMPS&#39;, &#39;XKR5&#39;, &#39;ZBTB43&#39;]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cells: 100%|██████████| 3/3 [00:02&lt;00:00,  1.44it/s]
-cells: 100%|██████████| 9/9 [00:05&lt;00:00,  1.73it/s]
-cells: 100%|██████████| 9/9 [00:05&lt;00:00,  1.72it/s]
-cells: 100%|██████████| 9/9 [00:07&lt;00:00,  1.27it/s]
-cells: 100%|██████████| 9/9 [00:07&lt;00:00,  1.28it/s]
-cells: 100%|██████████| 9/9 [00:08&lt;00:00,  1.07it/s]
-</pre></div>
-</div>
-<img alt="../_images/03bcd8f0261afa3b676244d4cce7f88227a05d7b3379f49dc4cec8e32aab18cd.png" src="../_images/03bcd8f0261afa3b676244d4cce7f88227a05d7b3379f49dc4cec8e32aab18cd.png" />
-</div>
-</div>
-<p>Subcluster with stronger nuclear localization:</p>
+<p>Subcluster with strong nuclear localization:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subcluster</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1095,8 +907,8 @@ cells: 100%|██████████| 9/9 [00:08&lt;00:00,  1.07it/s]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f41dac8d1c0c8aa54348499741639c2c5113e72de0587a10e5ec4c64717ed204.png" src="../_images/f41dac8d1c0c8aa54348499741639c2c5113e72de0587a10e5ec4c64717ed204.png" />
-<img alt="../_images/6b8ba4bab73892726d6642d56c746a224b8a85e7dcba8f8ec7d9d871617a6bf7.png" src="../_images/6b8ba4bab73892726d6642d56c746a224b8a85e7dcba8f8ec7d9d871617a6bf7.png" />
+<img alt="../_images/3c17abc4249e03f06c69af94bad6a58dda394401cff4099c91873e34da4560e2.png" src="../_images/3c17abc4249e03f06c69af94bad6a58dda394401cff4099c91873e34da4560e2.png" />
+<img alt="../_images/5b77701dfb36eea395f24bc59b5846c043a1f0823e9ad0839870248d82c84707.png" src="../_images/5b77701dfb36eea395f24bc59b5846c043a1f0823e9ad0839870248d82c84707.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1124,20 +936,107 @@ cells: 100%|██████████| 9/9 [00:08&lt;00:00,  1.07it/s]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing CLQs for gene set:
-[&#39;RP4-671O14.6&#39;, &#39;SKP1&#39;, &#39;SLC5A3&#39;, &#39;SOD2&#39;, &#39;TMOD2&#39;, &#39;TSPAN3&#39;, &#39;YIPF4&#39;]
+[&#39;MALAT1&#39;, &#39;SKP1&#39;, &#39;SLC5A3&#39;, &#39;SOD2&#39;, &#39;TSPAN3&#39;]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cells: 100%|██████████| 3/3 [00:01&lt;00:00,  1.78it/s]
-cells: 100%|██████████| 9/9 [00:04&lt;00:00,  2.19it/s]
-cells: 100%|██████████| 9/9 [00:04&lt;00:00,  2.10it/s]
-cells: 100%|██████████| 9/9 [00:05&lt;00:00,  1.57it/s]
-cells: 100%|██████████| 9/9 [00:05&lt;00:00,  1.66it/s]
-cells: 100%|██████████| 9/9 [00:06&lt;00:00,  1.43it/s]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cells: 100%|██████████| 3/3 [00:03&lt;00:00,  1.09s/it]
+cells: 100%|██████████| 9/9 [00:04&lt;00:00,  1.88it/s]
+cells: 100%|██████████| 9/9 [00:05&lt;00:00,  1.62it/s]
+cells: 100%|██████████| 9/9 [00:11&lt;00:00,  1.32s/it]
+cells: 100%|██████████| 9/9 [00:14&lt;00:00,  1.61s/it]
+cells: 100%|██████████| 9/9 [00:14&lt;00:00,  1.67s/it]
 </pre></div>
 </div>
-<img alt="../_images/f925bf06f760d2eef6ecfcecb71ce9cd5cc67fa8adbda8e3a716e356857cb2b0.png" src="../_images/f925bf06f760d2eef6ecfcecb71ce9cd5cc67fa8adbda8e3a716e356857cb2b0.png" />
+<img alt="../_images/760e613fdb37599e077002f369ad2842f7304b9b99bb634d9497ec3201a8d57b.png" src="../_images/760e613fdb37599e077002f369ad2842f7304b9b99bb634d9497ec3201a8d57b.png" />
 </div>
 </div>
+<p>Subcluster with weaker nuclear localization:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subcluster</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">gene_subset</span> <span class="o">=</span> <span class="n">cluster_gene_sets_subset</span><span class="p">[</span><span class="n">subcluster</span><span class="p">]</span>
+
+<span class="c1"># sample random cells</span>
+<span class="n">n_cells</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">RANDOM_SEED</span><span class="p">)</span>
+<span class="n">random_cells</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">cell_key</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">n_cells</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot distribution of single transcripts</span>
+<span class="n">pt</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">cells_in_grid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="mi">4</span><span class="p">,</span>
+                    <span class="n">adata</span><span class="p">,</span>
+                    <span class="n">genes</span><span class="o">=</span><span class="n">gene_subset</span><span class="p">,</span>
+                    <span class="n">cell_list</span><span class="o">=</span><span class="n">random_cells</span><span class="p">,</span>
+                    <span class="n">cell_boundaries</span><span class="o">=</span><span class="n">cell_boundaries</span><span class="p">,</span>
+                    <span class="n">nucleus_boundaries</span><span class="o">=</span><span class="n">nucleus_boundaries</span><span class="p">,</span>
+                    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gene set&#39;</span><span class="p">,</span>
+                    <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+<span class="c1"># plot transcript density of gene set</span>
+<span class="n">pt</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">cells_in_grid</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="mi">4</span><span class="p">,</span>
+                    <span class="n">adata</span><span class="p">,</span>
+                    <span class="n">genes</span><span class="o">=</span><span class="n">gene_subset</span><span class="p">,</span>
+                    <span class="n">cell_list</span><span class="o">=</span><span class="n">random_cells</span><span class="p">,</span>
+                    <span class="n">cell_boundaries</span><span class="o">=</span><span class="n">cell_boundaries</span><span class="p">,</span>
+                    <span class="n">nucleus_boundaries</span><span class="o">=</span><span class="n">nucleus_boundaries</span><span class="p">,</span>
+                    <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gene set&#39;</span><span class="p">,</span>
+                    <span class="n">plot_type</span><span class="o">=</span><span class="s1">&#39;histogram_relative&#39;</span><span class="p">,</span>
+                    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/627136abc81e2a7a81a69dff66419c4f2a58e8d9e904c7187fb8d594bc696242.png" src="../_images/627136abc81e2a7a81a69dff66419c4f2a58e8d9e904c7187fb8d594bc696242.png" />
+<img alt="../_images/c30315ae85ff54b4d411e6a7cfe42a8d32930d260238210977aa57e9ce3e3b4f.png" src="../_images/c30315ae85ff54b4d411e6a7cfe42a8d32930d260238210977aa57e9ce3e3b4f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute CLQs for each cluster for random cells</span>
+<span class="n">gene_subset</span> <span class="o">=</span> <span class="n">cluster_gene_sets_subset</span><span class="p">[</span><span class="n">subcluster</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Computing CLQs for gene set:</span><span class="se">\n</span><span class="si">{</span><span class="n">gene_subset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">clqs</span><span class="p">,</span> <span class="n">clqs_adjusted</span><span class="p">,</span> <span class="n">clqs_permuted</span> <span class="o">=</span> <span class="n">pt</span><span class="o">.</span><span class="n">cell_score</span><span class="o">.</span><span class="n">clq</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span>
+                                                       <span class="n">genes</span><span class="o">=</span><span class="n">gene_subset</span><span class="p">,</span>
+                                                       <span class="n">graph</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                                       <span class="n">n_neighbors</span><span class="o">=</span><span class="n">n_neighbors</span><span class="p">,</span>
+                                                       <span class="n">radius</span><span class="o">=</span><span class="n">radius</span><span class="p">,</span>
+                                                       <span class="n">n_permutations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                                       <span class="n">seed</span><span class="o">=</span><span class="n">RANDOM_SEED</span><span class="p">,</span> 
+                                                       <span class="n">use_obs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                                       <span class="n">n_processes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                                       <span class="n">z_key</span><span class="o">=</span><span class="kc">None</span>
+                                                       <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">clqs_adjusted</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing CLQs for gene set:
+[&#39;AGO3&#39;, &#39;ARL10&#39;, &#39;BUB3&#39;, &#39;FZD5&#39;, &#39;MCF2L&#39;, &#39;NKTR&#39;, &#39;POLQ&#39;, &#39;RAD51D&#39;, &#39;RNF152&#39;, &#39;RP4-671O14.6&#39;, &#39;SRRM2&#39;, &#39;STARD9&#39;, &#39;TMOD2&#39;, &#39;UMPS&#39;, &#39;XKR5&#39;, &#39;YIPF4&#39;, &#39;ZBTB43&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cells: 100%|██████████| 3/3 [00:04&lt;00:00,  1.38s/it]
+cells: 100%|██████████| 9/9 [00:08&lt;00:00,  1.00it/s]
+cells: 100%|██████████| 9/9 [00:09&lt;00:00,  1.06s/it]
+cells: 100%|██████████| 9/9 [00:14&lt;00:00,  1.62s/it]
+cells: 100%|██████████| 9/9 [00:16&lt;00:00,  1.84s/it]
+cells: 100%|██████████| 9/9 [00:18&lt;00:00,  2.10s/it]
+</pre></div>
+</div>
+<img alt="../_images/0d02dcd820dd5cff1a6f87e86c18220c0f99d28b6a0d73126ddf5e590520e5ac.png" src="../_images/0d02dcd820dd5cff1a6f87e86c18220c0f99d28b6a0d73126ddf5e590520e5ac.png" />
+</div>
+</div>
+</section>
 </section>
 
 
@@ -1186,16 +1085,15 @@ cells: 100%|██████████| 9/9 [00:06&lt;00:00,  1.43it/s]
     <i class="fa-solid fa-list"></i> On this page
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. prepare data for training and analysis</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-model-and-training-data">2. create model and training data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#train-model">3. train model</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-and-cluster-embeddings">4. aggregate and cluster embeddings</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-clusters-visually">5. explore clusters visually</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-clq-scores">6. compute CLQ scores</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subclustering">7. subclustering</a></li>
+    <ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data-for-training-and-analysis">1. prepare data for training and analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-model-and-training-data">2. create model and training data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#train-model">3. train model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-and-cluster-embeddings">4. aggregate and cluster embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-clusters-visually">5. explore clusters visually</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-clq-scores">6. compute CLQ scores</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subclustering">7. subclustering</a></li>
 </ul>
-
   </nav></div>
 
   <div class="sidebar-secondary-item">

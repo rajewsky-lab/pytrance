@@ -1,0 +1,1276 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pytrance.plotting &#8212; pyTrance 0.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=01f34227"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pytrance/plotting';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">pyTrance 0.1.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../tutorials.html">
+    Tutorials
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API Reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pytrance.plotting</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pytrance.plotting</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">anndata</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnData</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.axes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoundaryNorm</span><span class="p">,</span> <span class="n">LinearSegmentedColormap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.figure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.image</span><span class="w"> </span><span class="kn">import</span> <span class="n">AxesImage</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">hierarchy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">compute_figure_size</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_prepare_hue_coloring</span><span class="p">(</span>
+    <span class="n">cell_df</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">gene_key</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">genes_colors</span><span class="p">,</span> <span class="n">adata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cell_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cell</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare hue column and color mapping based on hue type.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">hue</span> <span class="o">==</span> <span class="s2">&quot;gene set&quot;</span><span class="p">:</span>
+        <span class="n">cell_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;hue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">cell_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell_df</span><span class="p">[</span><span class="n">cell_df</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;hue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gene set&quot;</span>
+        <span class="n">cell_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell_df</span><span class="p">[</span><span class="o">~</span><span class="n">cell_df</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s2">&quot;hue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;rest&quot;</span>
+        <span class="n">genes_colors</span><span class="p">[</span><span class="s2">&quot;gene set&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;darkorange&quot;</span>
+        <span class="n">genes_colors</span><span class="p">[</span><span class="s2">&quot;rest&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;lightblue&quot;</span>
+        <span class="k">return</span> <span class="n">cell_df</span><span class="p">,</span> <span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="n">genes_colors</span>
+
+    <span class="k">elif</span> <span class="n">hue</span> <span class="o">==</span> <span class="s2">&quot;gene set only&quot;</span><span class="p">:</span>
+        <span class="n">cell_df</span> <span class="o">=</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">cell_df</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">cell_df</span><span class="p">,</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">genes_colors</span>
+
+    <span class="k">elif</span> <span class="n">hue</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cell_df</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">genes_colors</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># hue is a column name - return it as string, not list</span>
+        <span class="k">return</span> <span class="n">cell_df</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_setup_subplot_axis</span><span class="p">(</span>
+    <span class="n">fig</span><span class="p">,</span>
+    <span class="n">fig_width</span><span class="p">,</span>
+    <span class="n">fig_height</span><span class="p">,</span>
+    <span class="n">row</span><span class="p">,</span>
+    <span class="n">col</span><span class="p">,</span>
+    <span class="n">col_lefts</span><span class="p">,</span>
+    <span class="n">row_bottoms</span><span class="p">,</span>
+    <span class="n">col_widths</span><span class="p">,</span>
+    <span class="n">row_heights</span><span class="p">,</span>
+    <span class="n">subplot_widths</span><span class="p">,</span>
+    <span class="n">subplot_heights</span><span class="p">,</span>
+    <span class="n">df_to_plot</span><span class="p">,</span>
+    <span class="n">boundary_padding</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">,</span>
+    <span class="n">cell_boundaries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">nucleus_boundaries</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">cell</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">technology</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">z</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Setup subplot axis with correct positioning and limits.&quot;&quot;&quot;</span>
+    <span class="n">sw</span> <span class="o">=</span> <span class="n">subplot_widths</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+    <span class="n">sh</span> <span class="o">=</span> <span class="n">subplot_heights</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span>
+    <span class="n">grid_cell_w</span> <span class="o">=</span> <span class="n">col_widths</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+    <span class="n">grid_cell_h</span> <span class="o">=</span> <span class="n">row_heights</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+
+    <span class="n">left</span> <span class="o">=</span> <span class="n">col_lefts</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">grid_cell_w</span> <span class="o">-</span> <span class="n">sw</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">bottom</span> <span class="o">=</span> <span class="n">row_bottoms</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">grid_cell_h</span> <span class="o">-</span> <span class="n">sh</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+    <span class="n">norm_left</span> <span class="o">=</span> <span class="n">left</span> <span class="o">/</span> <span class="n">fig_width</span>
+    <span class="n">norm_bottom</span> <span class="o">=</span> <span class="n">bottom</span> <span class="o">/</span> <span class="n">fig_height</span>
+    <span class="n">norm_width</span> <span class="o">=</span> <span class="n">sw</span> <span class="o">/</span> <span class="n">fig_width</span>
+    <span class="n">norm_height</span> <span class="o">=</span> <span class="n">sh</span> <span class="o">/</span> <span class="n">fig_height</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="n">norm_left</span><span class="p">,</span> <span class="n">norm_bottom</span><span class="p">,</span> <span class="n">norm_width</span><span class="p">,</span> <span class="n">norm_height</span><span class="p">])</span>
+
+    <span class="c1"># Determine coordinates for axis limits - use boundary if available, otherwise use spots</span>
+    <span class="k">if</span> <span class="n">cell_boundaries</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Extract boundary coordinates</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">cell_boundaries</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+            <span class="n">boundary_coords</span> <span class="o">=</span> <span class="n">cell_boundaries</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span>
+            <span class="n">x_coords</span> <span class="o">=</span> <span class="n">boundary_coords</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="n">y_coords</span> <span class="o">=</span> <span class="n">boundary_coords</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">technology</span> <span class="o">==</span> <span class="s2">&quot;xenium&quot;</span><span class="p">:</span>
+            <span class="n">x_coords</span> <span class="o">=</span> <span class="n">cell_boundaries</span><span class="p">[</span><span class="n">cell_boundaries</span><span class="o">.</span><span class="n">cell_id</span> <span class="o">==</span> <span class="n">cell</span><span class="p">]</span><span class="o">.</span><span class="n">vertex_x</span><span class="o">.</span><span class="n">values</span>
+            <span class="n">y_coords</span> <span class="o">=</span> <span class="n">cell_boundaries</span><span class="p">[</span><span class="n">cell_boundaries</span><span class="o">.</span><span class="n">cell_id</span> <span class="o">==</span> <span class="n">cell</span><span class="p">]</span><span class="o">.</span><span class="n">vertex_y</span><span class="o">.</span><span class="n">values</span>
+        <span class="k">elif</span> <span class="n">technology</span> <span class="o">==</span> <span class="s2">&quot;merfish&quot;</span><span class="p">:</span>
+            <span class="n">mask_x</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cell_boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;boundaryX_z</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">mask_y</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">cell_boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;boundaryY_z</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+            <span class="p">]</span>
+            <span class="n">x_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mask_x</span><span class="p">)</span>
+            <span class="n">y_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mask_y</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell_boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="n">x_key</span><span class="p">])</span>
+            <span class="n">y_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell_boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="n">y_key</span><span class="p">])</span>
+
+        <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">x_coords</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x_coords</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">y_coords</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_coords</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Use spot coordinates</span>
+        <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">df_to_plot</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_to_plot</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">df_to_plot</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df_to_plot</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="n">x_range</span> <span class="o">=</span> <span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span>
+    <span class="n">y_range</span> <span class="o">=</span> <span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span>
+
+    <span class="k">if</span> <span class="n">boundary_padding</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x_pad</span> <span class="o">=</span> <span class="n">x_range</span> <span class="o">*</span> <span class="n">boundary_padding</span>
+        <span class="n">y_pad</span> <span class="o">=</span> <span class="n">y_range</span> <span class="o">*</span> <span class="n">boundary_padding</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">x_pad</span> <span class="o">=</span> <span class="n">boundary_padding</span>
+        <span class="n">y_pad</span> <span class="o">=</span> <span class="n">boundary_padding</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_min</span> <span class="o">-</span> <span class="n">x_pad</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">+</span> <span class="n">x_pad</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">y_min</span> <span class="o">-</span> <span class="n">y_pad</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">+</span> <span class="n">y_pad</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_set_subplot_title</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">cell_scores</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Set subplot title based on cell scores.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">cell_scores</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CLQ_adj = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">cell_scores</span><span class="p">[</span><span class="n">cell</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cell: </span><span class="si">{</span><span class="n">cell</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_plot_transcripts</span><span class="p">(</span>
+    <span class="n">df_to_plot</span><span class="p">,</span>
+    <span class="n">plot_type</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">,</span>
+    <span class="n">fig</span><span class="p">,</span>
+    <span class="n">gene_key</span><span class="p">,</span>
+    <span class="n">genes</span><span class="p">,</span>
+    <span class="n">hue_cell</span><span class="p">,</span>
+    <span class="n">genes_colors_to_use</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot transcripts based on plot type.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s2">&quot;scatter&quot;</span><span class="p">:</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">df_to_plot</span><span class="p">,</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">x_key</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">y_key</span><span class="p">,</span>
+            <span class="n">hue</span><span class="o">=</span><span class="n">hue_cell</span><span class="p">,</span>
+            <span class="n">palette</span><span class="o">=</span><span class="n">genes_colors_to_use</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># plot gene set transcripts over rest</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+            <span class="n">data</span><span class="o">=</span><span class="n">df_to_plot</span><span class="p">[</span><span class="n">df_to_plot</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes</span><span class="p">)],</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">x_key</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">y_key</span><span class="p">,</span>
+            <span class="n">hue</span><span class="o">=</span><span class="n">hue_cell</span><span class="p">,</span>
+            <span class="n">palette</span><span class="o">=</span><span class="n">genes_colors_to_use</span><span class="p">,</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">legend</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s2">&quot;histogram_absolute&quot;</span><span class="p">:</span>
+        <span class="n">transcripts_histogram</span><span class="p">(</span>
+            <span class="n">df_to_plot</span><span class="p">,</span>
+            <span class="n">genes</span><span class="p">,</span>
+            <span class="n">ax</span><span class="p">,</span>
+            <span class="n">fig</span><span class="p">,</span>
+            <span class="s2">&quot;absolute&quot;</span><span class="p">,</span>
+            <span class="n">x_key</span><span class="p">,</span>
+            <span class="n">y_key</span><span class="p">,</span>
+            <span class="n">gene_key</span><span class="p">,</span>
+            <span class="n">cbar</span><span class="o">=</span><span class="n">cbar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s2">&quot;histogram_relative&quot;</span><span class="p">:</span>
+        <span class="n">transcripts_histogram</span><span class="p">(</span>
+            <span class="n">df_to_plot</span><span class="p">,</span>
+            <span class="n">genes</span><span class="p">,</span>
+            <span class="n">ax</span><span class="p">,</span>
+            <span class="n">fig</span><span class="p">,</span>
+            <span class="s2">&quot;relative&quot;</span><span class="p">,</span>
+            <span class="n">x_key</span><span class="p">,</span>
+            <span class="n">y_key</span><span class="p">,</span>
+            <span class="n">gene_key</span><span class="p">,</span>
+            <span class="n">cbar</span><span class="o">=</span><span class="n">cbar</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_collect_subplot_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">labels_handles</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Collect and remove legend from subplot.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">hue</span> <span class="ow">and</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s2">&quot;scatter&quot;</span><span class="p">:</span>
+        <span class="n">ax_handles</span><span class="p">,</span> <span class="n">ax_labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">handle</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax_handles</span><span class="p">,</span> <span class="n">ax_labels</span><span class="p">):</span>
+            <span class="n">labels_handles</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">handle</span>
+        <span class="k">if</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">get_legend</span><span class="p">()</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">labels_handles</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_prepare_plot_data</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">cells_to_plot</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">cell_key</span><span class="p">,</span> <span class="n">gene_key</span><span class="p">,</span> <span class="n">cmap</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prepare color mappings and grouping for plotting.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">genes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">genes</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span>
+
+    <span class="c1"># Get colormap and assign colors to genes</span>
+    <span class="n">cmap_colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colormaps</span><span class="p">[</span><span class="n">cmap</span><span class="p">]</span><span class="o">.</span><span class="n">colors</span>
+    <span class="n">genes_in_cells</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">adata</span><span class="p">[</span>
+            <span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">cell_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cells_to_plot</span><span class="p">))</span>
+            <span class="o">&amp;</span> <span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes</span><span class="p">))</span>
+        <span class="p">]</span>
+        <span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">genes_colors</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">g</span><span class="p">:</span> <span class="n">cmap_colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmap_colors</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">genes_in_cells</span><span class="p">))</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Group adata by cell</span>
+    <span class="n">adata_obs_cell_grouped</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cell_key</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">genes</span><span class="p">,</span> <span class="n">genes_colors</span><span class="p">,</span> <span class="n">adata_obs_cell_grouped</span>
+
+
+<div class="viewcode-block" id="embedding_pca">
+<a class="viewcode-back" href="../../autoapi/pytrance/plotting/index.html#pytrance.plotting.embedding_pca">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">embedding_pca</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">:</span> <span class="n">AnnData</span><span class="p">,</span>
+    <span class="n">embeds_pca</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;leiden&quot;</span><span class="p">,</span>
+    <span class="n">pca_model</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PCA</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">categorical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot PCA embeddings with gene cluster coloring.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    adata : AnnData</span>
+<span class="sd">        Annotated data object containing containing observation metadata.</span>
+<span class="sd">    embeds_pca : ndarray</span>
+<span class="sd">        2D PCA-reduced embeddings.</span>
+<span class="sd">    key : str, optional</span>
+<span class="sd">        Column name in adata.var for cluster assignments. Default is &quot;leiden&quot;.</span>
+<span class="sd">    pca_model : PCA, optional</span>
+<span class="sd">        Fitted PCA model. If provided, variance explained percentages are added</span>
+<span class="sd">        to axis labels. Default is None.</span>
+<span class="sd">    categorical : bool, optional</span>
+<span class="sd">        If True, color by categorical clusters using seaborn scatterplot.</span>
+<span class="sd">        If False, use continuous color mapping. Default is True.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to scatterplot/scatter functions.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">        Displays plot using matplotlib.pyplot.show().</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">categorical</span><span class="p">:</span>
+        <span class="n">scatter</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">embeds_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">embeds_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+        <span class="n">scatter</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">scatter</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">embeds_pca</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">embeds_pca</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">key</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">pca_model</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PC1 (</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pca_model</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PC2 (</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">pca_model</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span></div>
+
+
+
+<div class="viewcode-block" id="cells_in_grid">
+<a class="viewcode-back" href="../../autoapi/pytrance/plotting/index.html#pytrance.plotting.cells_in_grid">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cells_in_grid</span><span class="p">(</span>
+    <span class="n">n_rows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">n_cols</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">adata</span><span class="p">:</span> <span class="n">AnnData</span><span class="p">,</span>
+    <span class="n">genes</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cell_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cell_scores</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cell_boundaries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">nucleus_boundaries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">hue</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gene&quot;</span><span class="p">,</span>
+    <span class="n">plot_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;scatter&quot;</span><span class="p">,</span>
+    <span class="n">z</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">cell_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cell&quot;</span><span class="p">,</span>
+    <span class="n">gene_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gene&quot;</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">z_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;z&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;tab20&quot;</span><span class="p">,</span>
+    <span class="n">technology</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">s</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">col_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">row_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">boundary_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">return_fig</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Figure</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create multi-panel grid visualization of cells with spots/transcripts.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n_rows : int</span>
+<span class="sd">        Number of rows in subplot grid.</span>
+<span class="sd">    n_cols : int</span>
+<span class="sd">        Number of columns in subplot grid.</span>
+<span class="sd">    adata : AnnData</span>
+<span class="sd">        Annotated data object with transcript-level observations.</span>
+<span class="sd">    genes : array-like, optional</span>
+<span class="sd">        Genes to highlight. If None, all genes in adata are used. Default is None.</span>
+<span class="sd">    cell_list : array-like</span>
+<span class="sd">        List of cell IDs to plot.</span>
+<span class="sd">    cell_scores : dict, optional</span>
+<span class="sd">        Co-localization scores per cell for subplot titles. Default is None.</span>
+<span class="sd">    cell_scores : dict, optional</span>
+<span class="sd">        (Adjusted) scores per cell for titles. Default is None.</span>
+<span class="sd">    cell_boundaries : list, ndarray, or DataFrame, optional</span>
+<span class="sd">        Cell boundary coordinates (format depends on technology). Default is None.</span>
+<span class="sd">    nucleus_boundaries : list, ndarray, or DataFrame, optional</span>
+<span class="sd">        Nucleus boundary coordinates (format depends on technology). Default is None.</span>
+<span class="sd">    hue : str, optional</span>
+<span class="sd">        Style to use for coloring transcripts (&#39;gene&#39;, &#39;gene set&#39;, &#39;gene set only&#39;,</span>
+<span class="sd">        or column name). Default is &quot;gene&quot;.</span>
+<span class="sd">    plot_type : {&#39;scatter&#39;, &#39;histogram_absolute&#39;, &#39;histogram_relative&#39;}, optional</span>
+<span class="sd">        Type of plot for each subplot. Default is &quot;scatter&quot;.</span>
+<span class="sd">    z : float, optional</span>
+<span class="sd">        Z-slice value to filter transcripts. If None, uses all z values. Default is None.</span>
+<span class="sd">    cell_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for cell IDs. Default is &quot;cell&quot;.</span>
+<span class="sd">    gene_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for gene assignment. Default is &quot;gene&quot;.</span>
+<span class="sd">    x_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for x coordinates. Default is &quot;x&quot;.</span>
+<span class="sd">    y_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for y coordinates. Default is &quot;y&quot;.</span>
+<span class="sd">    z_key : str, optional</span>
+<span class="sd">        Column name in adata.obs for z coordinates. Default is &quot;z&quot;.</span>
+<span class="sd">    cmap : str, optional</span>
+<span class="sd">        Colormap name for gene coloring (scatter plots). Default is &quot;tab20&quot;.</span>
+<span class="sd">    technology : {&#39;xenium&#39;, &#39;merfish&#39;}, optional</span>
+<span class="sd">        Technology for boundary format interpretation. Default is None.</span>
+<span class="sd">    s : float, optional</span>
+<span class="sd">        Marker size for scatter plots. Default is 50.</span>
+<span class="sd">    scale : float, optional</span>
+<span class="sd">        Scale factor for subplot dimensions. Default is 0.1.</span>
+<span class="sd">    col_padding : float, optional</span>
+<span class="sd">        Horizontal padding between columns. Default is 10.</span>
+<span class="sd">    row_padding : float, optional</span>
+<span class="sd">        Vertical padding between rows. Default is 10.</span>
+<span class="sd">    boundary_padding : float, optional</span>
+<span class="sd">        Padding around data in axis limits. Default is 5.</span>
+<span class="sd">    fontsize : int, optional</span>
+<span class="sd">        Font size for subplot titles. Default is 14.</span>
+<span class="sd">    return_fig : bool, optional</span>
+<span class="sd">        If True, return figure object. If False, display with plt.show(). Default is False.</span>
+<span class="sd">    cbar : bool, optional</span>
+<span class="sd">        Show colorbar for histogram plots. Default is True.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to plotting functions.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.figure.Figure or None</span>
+<span class="sd">        Figure object if return_fig=True, otherwise None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">n_cells</span> <span class="o">=</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="n">n_cols</span>
+    <span class="k">if</span> <span class="n">cell_list</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;no cells specified&quot;</span><span class="p">)</span>
+    <span class="n">cells_to_plot</span> <span class="o">=</span> <span class="n">cell_list</span><span class="p">[:</span><span class="n">n_cells</span><span class="p">]</span>
+
+    <span class="c1"># Prepare plot data (genes, colors, grouping)</span>
+    <span class="c1"># For scatter plots, use provided cmap for gene coloring; for histograms, use neutral default</span>
+    <span class="n">genes_colors_cmap</span> <span class="o">=</span> <span class="n">cmap</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">plot_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;histogram&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;tab20&quot;</span>
+    <span class="n">genes</span><span class="p">,</span> <span class="n">genes_colors</span><span class="p">,</span> <span class="n">adata_obs_cell_grouped</span> <span class="o">=</span> <span class="n">_prepare_plot_data</span><span class="p">(</span>
+        <span class="n">adata</span><span class="p">,</span> <span class="n">cells_to_plot</span><span class="p">,</span> <span class="n">genes</span><span class="p">,</span> <span class="n">cell_key</span><span class="p">,</span> <span class="n">gene_key</span><span class="p">,</span> <span class="n">genes_colors_cmap</span>
+    <span class="p">)</span>
+    <span class="n">labels_handles</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Pass histogram cmap through kwargs only if custom cmap provided (not default &#39;tab20&#39;)</span>
+    <span class="k">if</span> <span class="n">plot_type</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;histogram&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">cmap</span> <span class="o">!=</span> <span class="s2">&quot;tab20&quot;</span> <span class="ow">and</span> <span class="s2">&quot;cmap&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;cmap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmap</span>
+
+    <span class="c1"># compute figure size after scaling</span>
+    <span class="p">(</span>
+        <span class="n">fig_width</span><span class="p">,</span>
+        <span class="n">fig_height</span><span class="p">,</span>
+        <span class="n">row_heights</span><span class="p">,</span>
+        <span class="n">col_widths</span><span class="p">,</span>
+        <span class="n">subplot_heights</span><span class="p">,</span>
+        <span class="n">subplot_widths</span><span class="p">,</span>
+        <span class="n">col_padding</span><span class="p">,</span>
+        <span class="n">row_padding</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">=</span> <span class="n">compute_figure_size</span><span class="p">(</span>
+        <span class="n">adata</span><span class="p">,</span>
+        <span class="n">cell_list</span><span class="p">,</span>
+        <span class="n">n_rows</span><span class="p">,</span>
+        <span class="n">n_cols</span><span class="p">,</span>
+        <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
+        <span class="n">col_padding</span><span class="o">=</span><span class="n">col_padding</span><span class="p">,</span>
+        <span class="n">row_padding</span><span class="o">=</span><span class="n">row_padding</span><span class="p">,</span>
+        <span class="n">boundary_padding</span><span class="o">=</span><span class="n">boundary_padding</span><span class="p">,</span>
+        <span class="n">cell_key</span><span class="o">=</span><span class="n">cell_key</span><span class="p">,</span>
+        <span class="n">x_key</span><span class="o">=</span><span class="n">x_key</span><span class="p">,</span>
+        <span class="n">y_key</span><span class="o">=</span><span class="n">y_key</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">fig_width</span><span class="p">,</span> <span class="n">fig_height</span><span class="p">))</span>
+
+    <span class="n">cell_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">col_lefts</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">col_widths</span><span class="p">[:</span><span class="n">col</span><span class="p">])</span> <span class="o">+</span> <span class="n">col</span> <span class="o">*</span> <span class="n">col_padding</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">)]</span>
+    <span class="n">row_bottoms</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nb">sum</span><span class="p">(</span><span class="n">row_heights</span><span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:])</span> <span class="o">+</span> <span class="p">(</span><span class="n">n_rows</span> <span class="o">-</span> <span class="n">row</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">row_padding</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rows</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_cols</span><span class="p">):</span>
+            <span class="n">cell</span> <span class="o">=</span> <span class="n">cells_to_plot</span><span class="p">[</span><span class="n">cell_count</span><span class="p">]</span>
+            <span class="n">cell_df</span> <span class="o">=</span> <span class="n">adata_obs_cell_grouped</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">df_to_plot</span> <span class="o">=</span> <span class="n">cell_df</span>
+
+            <span class="c1"># Prepare hue coloring</span>
+            <span class="n">df_to_plot</span><span class="p">,</span> <span class="n">hue_cell</span><span class="p">,</span> <span class="n">genes_colors_to_use</span> <span class="o">=</span> <span class="n">_prepare_hue_coloring</span><span class="p">(</span>
+                <span class="n">df_to_plot</span><span class="p">,</span>
+                <span class="n">hue</span><span class="p">,</span>
+                <span class="n">gene_key</span><span class="p">,</span>
+                <span class="n">genes</span><span class="p">,</span>
+                <span class="n">genes_colors</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+                <span class="n">adata</span><span class="o">=</span><span class="n">adata</span><span class="p">,</span>
+                <span class="n">cell_key</span><span class="o">=</span><span class="n">cell_key</span><span class="p">,</span>
+                <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># only take transcripts from given z slice</span>
+            <span class="k">if</span> <span class="n">z</span><span class="p">:</span>
+                <span class="n">df_to_plot</span> <span class="o">=</span> <span class="n">df_to_plot</span><span class="p">[</span><span class="n">df_to_plot</span><span class="p">[</span><span class="n">z_key</span><span class="p">]</span> <span class="o">==</span> <span class="n">z</span><span class="p">]</span>
+
+            <span class="c1"># Setup subplot axis with proper positioning and limits</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">_setup_subplot_axis</span><span class="p">(</span>
+                <span class="n">fig</span><span class="p">,</span>
+                <span class="n">fig_width</span><span class="p">,</span>
+                <span class="n">fig_height</span><span class="p">,</span>
+                <span class="n">row</span><span class="p">,</span>
+                <span class="n">col</span><span class="p">,</span>
+                <span class="n">col_lefts</span><span class="p">,</span>
+                <span class="n">row_bottoms</span><span class="p">,</span>
+                <span class="n">col_widths</span><span class="p">,</span>
+                <span class="n">row_heights</span><span class="p">,</span>
+                <span class="n">subplot_widths</span><span class="p">,</span>
+                <span class="n">subplot_heights</span><span class="p">,</span>
+                <span class="n">df_to_plot</span><span class="p">,</span>
+                <span class="n">boundary_padding</span><span class="p">,</span>
+                <span class="n">x_key</span><span class="p">,</span>
+                <span class="n">y_key</span><span class="p">,</span>
+                <span class="n">cell_boundaries</span><span class="o">=</span><span class="n">cell_boundaries</span><span class="p">,</span>
+                <span class="n">nucleus_boundaries</span><span class="o">=</span><span class="n">nucleus_boundaries</span><span class="p">,</span>
+                <span class="n">cell</span><span class="o">=</span><span class="n">cell</span><span class="p">,</span>
+                <span class="n">technology</span><span class="o">=</span><span class="n">technology</span><span class="p">,</span>
+                <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Plot transcripts</span>
+            <span class="n">_plot_transcripts</span><span class="p">(</span>
+                <span class="n">df_to_plot</span><span class="p">,</span>
+                <span class="n">plot_type</span><span class="p">,</span>
+                <span class="n">ax</span><span class="p">,</span>
+                <span class="n">fig</span><span class="p">,</span>
+                <span class="n">gene_key</span><span class="p">,</span>
+                <span class="n">genes</span><span class="p">,</span>
+                <span class="n">hue_cell</span><span class="p">,</span>
+                <span class="n">genes_colors_to_use</span><span class="p">,</span>
+                <span class="n">x_key</span><span class="p">,</span>
+                <span class="n">y_key</span><span class="p">,</span>
+                <span class="n">s</span><span class="p">,</span>
+                <span class="n">cbar</span><span class="o">=</span><span class="n">cbar</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Set title</span>
+            <span class="n">_set_subplot_title</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">cell_scores</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">cell_boundaries</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mask</span><span class="p">(</span>
+                    <span class="n">cell_boundaries</span><span class="p">,</span>
+                    <span class="n">cell</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="p">,</span>
+                    <span class="n">technology</span><span class="o">=</span><span class="n">technology</span><span class="p">,</span>
+                    <span class="n">x_key</span><span class="o">=</span><span class="n">x_key</span><span class="p">,</span>
+                    <span class="n">y_key</span><span class="o">=</span><span class="n">y_key</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">nucleus_boundaries</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mask</span><span class="p">(</span>
+                    <span class="n">nucleus_boundaries</span><span class="p">,</span>
+                    <span class="n">cell</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="p">,</span>
+                    <span class="n">technology</span><span class="o">=</span><span class="n">technology</span><span class="p">,</span>
+                    <span class="n">x_key</span><span class="o">=</span><span class="n">x_key</span><span class="p">,</span>
+                    <span class="n">y_key</span><span class="o">=</span><span class="n">y_key</span><span class="p">,</span>
+                <span class="p">)</span>
+
+            <span class="n">cell_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="c1"># Collect legend from subplot</span>
+            <span class="n">labels_handles</span> <span class="o">=</span> <span class="n">_collect_subplot_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">labels_handles</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">hue</span> <span class="ow">and</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s2">&quot;scatter&quot;</span><span class="p">:</span>
+        <span class="n">labels_handles</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">labels_handles</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
+            <span class="n">labels_handles</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+            <span class="n">labels_handles</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+            <span class="n">handler_map</span><span class="o">=</span><span class="n">genes_colors</span><span class="p">,</span>
+            <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span>
+            <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span>
+            <span class="n">markerscale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="c1"># plt.show()</span>
+
+    <span class="k">if</span> <span class="n">return_fig</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fig</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span></div>
+
+
+
+<div class="viewcode-block" id="mask">
+<a class="viewcode-back" href="../../autoapi/pytrance/plotting/index.html#pytrance.plotting.mask">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span>
+    <span class="n">boundaries</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">],</span>
+    <span class="n">cell</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+    <span class="n">technology</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">z</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">c</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw cell or nucleus boundary mask on matplotlib axis.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    boundaries : list, ndarray, or DataFrame</span>
+<span class="sd">        Boundary coordinates. Format depends on technology type.</span>
+<span class="sd">    cell : str</span>
+<span class="sd">        Cell ID to retrieve boundaries for.</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        Target axis to draw on.</span>
+<span class="sd">    technology : {&#39;xenium&#39;, &#39;merfish&#39;}, optional</span>
+<span class="sd">        Technology for boundary format interpretation. Default is None.</span>
+<span class="sd">    z : float, optional</span>
+<span class="sd">        Z-slice for MERFISH boundaries. Default is 0.</span>
+<span class="sd">    x_key : str, optional</span>
+<span class="sd">        Column name for x coordinates in DataFrame. Default is &quot;x&quot;.</span>
+<span class="sd">    y_key : str, optional</span>
+<span class="sd">        Column name for y coordinates in DataFrame. Default is &quot;y&quot;.</span>
+<span class="sd">    c : str, optional</span>
+<span class="sd">        Line color. Default is &quot;black&quot;.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to ax.plot().</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">boundaries</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">list</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">boundaries</span><span class="p">[</span><span class="n">cell</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">technology</span> <span class="o">==</span> <span class="s2">&quot;xenium&quot;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+            <span class="n">boundaries</span><span class="p">[</span><span class="n">boundaries</span><span class="o">.</span><span class="n">cell_id</span> <span class="o">==</span> <span class="n">cell</span><span class="p">]</span><span class="o">.</span><span class="n">vertex_x</span><span class="p">,</span>
+            <span class="n">boundaries</span><span class="p">[</span><span class="n">boundaries</span><span class="o">.</span><span class="n">cell_id</span> <span class="o">==</span> <span class="n">cell</span><span class="p">]</span><span class="o">.</span><span class="n">vertex_y</span><span class="p">,</span>
+            <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">technology</span> <span class="o">==</span> <span class="s2">&quot;merfish&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">type</span><span class="p">(</span><span class="n">boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;boundaryX_z</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span>
+        <span class="p">):</span>  <span class="c1"># skip if no mask at this z</span>
+            <span class="k">return</span>
+        <span class="n">mask_x</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;boundaryX_z</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)]</span>
+        <span class="n">mask_y</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;boundaryY_z</span><span class="si">{</span><span class="n">z</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">mask_x</span><span class="p">,</span> <span class="n">mask_y</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">mask</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mask_x</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="n">x_key</span><span class="p">]]</span>
+        <span class="n">mask_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">boundaries</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cell</span><span class="p">,</span> <span class="n">y_key</span><span class="p">]]</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">mask_x</span><span class="p">,</span> <span class="n">mask_y</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">mask</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span></div>
+
+
+
+<div class="viewcode-block" id="transcripts_histogram">
+<a class="viewcode-back" href="../../autoapi/pytrance/plotting/index.html#pytrance.plotting.transcripts_histogram">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">transcripts_histogram</span><span class="p">(</span>
+    <span class="n">cell_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">genes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+    <span class="n">fig</span><span class="p">:</span> <span class="n">Figure</span><span class="p">,</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;absolute&quot;</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
+    <span class="n">gene_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;gene&quot;</span><span class="p">,</span>
+    <span class="n">bin_size</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">return_fig</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">discrete</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">cbar</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AxesImage</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create 2D histogram visualization of transcript density.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cell_df : DataFrame</span>
+<span class="sd">        Cell transcript data.</span>
+<span class="sd">    genes : array-like</span>
+<span class="sd">        Genes to include in histogram.</span>
+<span class="sd">    ax : matplotlib.axes.Axes</span>
+<span class="sd">        Target axis for plotting.</span>
+<span class="sd">    fig : matplotlib.figure.Figure</span>
+<span class="sd">        Figure object for adding colorbar.</span>
+<span class="sd">    type : {&#39;absolute&#39;, &#39;relative&#39;, &#39;normalized&#39;}, optional</span>
+<span class="sd">        Histogram type. &#39;absolute&#39;: counts, &#39;relative&#39;: counts/total,</span>
+<span class="sd">        &#39;normalized&#39;: L2-normalized counts. Default is \&quot;absolute\&quot;.</span>
+<span class="sd">    x_key : str, optional</span>
+<span class="sd">        Column name for x coordinates. Default is &quot;x&quot;.</span>
+<span class="sd">    y_key : str, optional</span>
+<span class="sd">        Column name for y coordinates. Default is &quot;y&quot;.</span>
+<span class="sd">    gene_key : str, optional</span>
+<span class="sd">        Column name for gene assignment. Default is &quot;gene&quot;.</span>
+<span class="sd">    bin_size : float, optional</span>
+<span class="sd">        Size of histogram bins. Default is 25.</span>
+<span class="sd">    vmax : float, optional</span>
+<span class="sd">        Maximum value for color scale. Only used for &#39;relative&#39; type. Default is None.</span>
+<span class="sd">    return_fig : bool, optional</span>
+<span class="sd">        If True, return image object. Default is False.</span>
+<span class="sd">    discrete : bool, optional</span>
+<span class="sd">        If True, use discrete colors for integer counts. Default is False.</span>
+<span class="sd">    cbar : bool, optional</span>
+<span class="sd">        Show colorbar. Default is True.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to ax.imshow() (e.g., cmap).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    matplotlib.image.AxesImage or None</span>
+<span class="sd">        Image object if return_fig=True, otherwise None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cell_df_gene_group</span> <span class="o">=</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">cell_df</span><span class="p">[</span><span class="n">gene_key</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">genes</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="s2">&quot;cmap&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+        <span class="n">n_colors</span> <span class="o">=</span> <span class="mi">256</span>
+        <span class="n">color_array</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colormaps</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s2">&quot;Oranges&quot;</span><span class="p">)(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_colors</span><span class="p">))</span>
+        <span class="n">color_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">alpha_oranges_cmap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">color_array</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;cmap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_oranges_cmap</span>
+
+    <span class="n">bin_edges_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">bin_size</span><span class="p">)</span>
+    <span class="n">bin_edges_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">bin_size</span><span class="p">)</span>
+
+    <span class="n">hist_gg</span><span class="p">,</span> <span class="n">xedges_gg</span><span class="p">,</span> <span class="n">yedges_gg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">cell_df_gene_group</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">cell_df_gene_group</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bin_edges_x</span><span class="p">,</span> <span class="n">bin_edges_y</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">discrete</span><span class="p">:</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">BoundaryNorm</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist_gg</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;cmap&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">N</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s2">&quot;max&quot;</span>
+        <span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;norm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">norm</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;absolute&quot;</span><span class="p">:</span>
+        <span class="n">hist</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+            <span class="n">hist_gg</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+            <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+            <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xedges_gg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xedges_gg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yedges_gg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yedges_gg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="c1"># alpha=0.7,</span>
+            <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;relative&quot;</span><span class="p">:</span>
+        <span class="n">hist_total</span><span class="p">,</span> <span class="n">xedges_total</span><span class="p">,</span> <span class="n">yedges_total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">cell_df</span><span class="p">[</span><span class="n">x_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">cell_df</span><span class="p">[</span><span class="n">y_key</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+            <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="n">bin_edges_x</span><span class="p">,</span> <span class="n">bin_edges_y</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">hist</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span>
+                    <span class="n">hist_gg</span><span class="p">,</span>
+                    <span class="n">hist_total</span><span class="p">,</span>
+                    <span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">hist_gg</span><span class="p">),</span>
+                    <span class="n">where</span><span class="o">=</span><span class="n">hist_total</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="mi">0</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+            <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+            <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xedges_gg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xedges_gg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yedges_gg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yedges_gg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span>
+            <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s2">&quot;normalized&quot;</span><span class="p">:</span>
+        <span class="n">hist_norm</span> <span class="o">=</span> <span class="n">hist_gg</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">hist_gg</span><span class="p">)</span>
+        <span class="n">hist</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+            <span class="n">hist_norm</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+            <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">,</span>
+            <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
+            <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xedges_gg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">xedges_gg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">yedges_gg</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">yedges_gg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="c1"># alpha=0.7,</span>
+            <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cbar</span><span class="p">:</span>
+        <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">hist</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">return_fig</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hist</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span></div>
+
+
+
+<div class="viewcode-block" id="dendrogram">
+<a class="viewcode-back" href="../../autoapi/pytrance/plotting/index.html#pytrance.plotting.dendrogram">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dendrogram</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="n">gene_names_ordered</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot hierarchical clustering dendrogram from model.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : object</span>
+<span class="sd">        Fitted hierarchical clustering model.</span>
+<span class="sd">    gene_names_ordered : array-like, optional</span>
+<span class="sd">        Ordered gene names for x-axis labels. If None, numeric indices are used.</span>
+<span class="sd">        Default is None.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to scipy.cluster.hierarchy.dendrogram().</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dendrogram dictionary from scipy.cluster.hierarchy.dendrogram().</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Create linkage matrix and then plot the dendrogram</span>
+
+    <span class="c1"># create the counts of samples under each node</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">merge</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="p">):</span>
+        <span class="n">current_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">child_idx</span> <span class="ow">in</span> <span class="n">merge</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">child_idx</span> <span class="o">&lt;</span> <span class="n">n_samples</span><span class="p">:</span>
+                <span class="n">current_count</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># leaf node</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">current_count</span> <span class="o">+=</span> <span class="n">counts</span><span class="p">[</span><span class="n">child_idx</span> <span class="o">-</span> <span class="n">n_samples</span><span class="p">]</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_count</span>
+
+    <span class="n">linkage_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">distances_</span><span class="p">,</span> <span class="n">counts</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+
+    <span class="c1"># Plot the corresponding dendrogram</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">dendro</span> <span class="o">=</span> <span class="n">hierarchy</span><span class="o">.</span><span class="n">dendrogram</span><span class="p">(</span><span class="n">linkage_matrix</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gene_names_ordered</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">gene_names_ordered</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">dendro</span></div>
+
+
+
+<div class="viewcode-block" id="pairwise_clq_heatmap">
+<a class="viewcode-back" href="../../autoapi/pytrance/plotting/index.html#pytrance.plotting.pairwise_clq_heatmap">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">pairwise_clq_heatmap</span><span class="p">(</span>
+    <span class="n">gene_set</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span>
+    <span class="n">clq_scores</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+    <span class="n">return_matrix</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">return_axis</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">Axes</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">Axes</span><span class="p">],</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Visualize pairwise CLQ scores as heatmap.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    gene_set : array-like</span>
+<span class="sd">        List of gene names to include in the heatmap.</span>
+<span class="sd">    clq_scores : dict</span>
+<span class="sd">        Dictionary mapping gene pairs (tuples) to CLQ score values.</span>
+<span class="sd">        Expected keys are (gene1, gene2) tuples for all pairs in gene_set.</span>
+<span class="sd">    return_matrix : bool, optional</span>
+<span class="sd">        If True, return the CLQ score matrix. Default is False.</span>
+<span class="sd">    return_axis : bool, optional</span>
+<span class="sd">        If True, return the heatmap axis/axes object. Default is False.</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to seaborn.heatmap().</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    DataFrame or AxesSubplot or tuple or None</span>
+<span class="sd">        Depending on return_matrix and return_axis flags:</span>
+<span class="sd">        - (False, False): None (displays plot)</span>
+<span class="sd">        - (True, False): DataFrame with CLQ scores</span>
+<span class="sd">        - (False, True): Heatmap axes object</span>
+<span class="sd">        - (True, True): Tuple of (DataFrame, heatmap axes)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">clq_adj_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">gene_set</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">gene_set</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">gene1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gene_set</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">gene2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">gene_set</span><span class="p">):</span>
+            <span class="n">clq_adj_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">clq_scores</span><span class="p">[(</span><span class="n">gene1</span><span class="p">,</span> <span class="n">gene2</span><span class="p">)],</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">clq_adj_df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">clq_adj_matrix</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">gene_set</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">gene_set</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">heatmap</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">clq_adj_df</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.1f&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">return_matrix</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">return_axis</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">clq_adj_df</span><span class="p">,</span> <span class="n">heatmap</span>
+        <span class="k">return</span> <span class="n">clq_adj_df</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">return_axis</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">heatmap</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
