@@ -7,8 +7,8 @@ Have a look at our preprint and documentation for more details.
 ## Installation
 First, download the code to your desired location in your filesystem:
 ```
-git clone https://github.com/rajewsky-lab/pyTrance/
-cd pyTrance
+git clone https://github.com/rajewsky-lab/pytrance/
+cd pytrance
 ```
 To install the pyTrance dependencies we highly recommend using [mamba](https://github.com/mamba-org/mamba) as a fast, drop-in replacement for `conda`. Alternatively, replace `mamba` with `conda` in the command bellow.:
 ```
