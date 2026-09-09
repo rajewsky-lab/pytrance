@@ -1,36 +1,37 @@
-from typing import Any, List, Sequence, Tuple
+from typing import Any, Optional, Sequence
 
 import numpy as np
 from anndata import AnnData
 from pandas import DataFrame
 from scipy.sparse import csr_matrix, spmatrix
 from sklearn.neighbors import kneighbors_graph, radius_neighbors_graph
-from torch import Size, from_numpy, sparse_coo_tensor
+from torch import Size, Tensor, from_numpy, sparse_coo_tensor
 
 
 def get_neighbors(
     cell_df: DataFrame,
-    radius: int = 2,
+    radius: Optional[int] = 2,
     n_neighbors: int = 20,
     metric: str = "euclidean",
     mode: str = "connectivity",
-    x_key="x_pos",
-    y_key="y_pos",
-    z_key=None,
+    x_key: str = "x_pos",
+    y_key: str = "y_pos",
+    z_key: Optional[str] = None,
     n_jobs: int = 1,
     include_self: bool = False,
-) -> tuple[csr_matrix, csr_matrix]:
+    distance_weighted: bool = False,
+) -> csr_matrix:
     """Build a spatial neighbor graph from transcript coordinates.
 
     Parameters
     ----------
     cell_df : DataFrame
         DataFrame containing transcript information of input cell.
-    radius : int, optional
-        Search radius for neighbors. If provided, radius_neighbors_graph is used.
-        Default is 2.
+    radius : int or None, optional
+        Search radius for neighbors. If provided, ``radius_neighbors_graph`` is
+        used. If None, ``kneighbors_graph`` is used instead. Default is 2.
     n_neighbors : int, optional
-        Number of nearest neighbors to consider when radius is None.
+        Number of nearest neighbors to consider when ``radius`` is None.
         Default is 20.
     metric : str, optional
         Distance metric to use. Default is "euclidean".
@@ -38,20 +39,23 @@ def get_neighbors(
         Type of graph returned. "connectivity" returns binary adjacency matrix,
         "distance" returns distance values. Default is "connectivity".
     x_key : str, optional
-        Column name for x coordinates in cell_df. Default is "x_pos".
+        Column name for x coordinates in ``cell_df``. Default is "x_pos".
     y_key : str, optional
-        Column name for y coordinates in cell_df. Default is "y_pos".
+        Column name for y coordinates in ``cell_df``. Default is "y_pos".
     z_key : str, optional
-        Column name for z coordinates in cell_df. If None, 2D coordinates are used.
-        Default is None.
+        Column name for z coordinates in ``cell_df``. If None, 2D coordinates are
+        used. Default is None.
     n_jobs : int, optional
         Number of parallel jobs for neighbor computation. Default is 1.
     include_self : bool, optional
         Whether to include self-loops in the graph. Default is False.
+    distance_weighted : bool, optional
+        If True, rescale edge weights between 0 and 1 based on the neighbor
+        distance. Default is False.
 
     Returns
     -------
-    tuple[csr_matrix, csr_matrix]
+    csr_matrix
         Sparse adjacency matrix in CSR format representing the neighbor graph.
     """
 
@@ -71,6 +75,12 @@ def get_neighbors(
             n_jobs=n_jobs,
             include_self=include_self,
         )
+        # normalize weights to range 0 (distance >= radius) to 1 (distance  = 0)
+        if distance_weighted:
+            graph = graph.copy().astype(float)
+            #graph.data = 1.0 / np.clip(graph.data / radius, 1e-12, None)
+            graph.data = np.clip(1.0 - graph.data / radius, 0.0, 1.0)
+            
     else:  # build graph based on nearest neighbors
         graph = kneighbors_graph(
             coords,
@@ -110,8 +120,8 @@ def get_gene_subclusters(genes: Sequence[Any], clustering_model: Any) -> dict:
 
 
 # from DGI
-def sparse_mx_to_torch_sparse_tensor(sparse_mx: spmatrix):
-    """Convert a scipy sparse matrix to a PyTorch sparse tensor.
+def sparse_mx_to_torch_sparse_tensor(sparse_mx: spmatrix) -> Tensor:
+    """Convert a SciPy sparse matrix to a PyTorch sparse tensor.
 
     Parameters
     ----------
@@ -120,7 +130,7 @@ def sparse_mx_to_torch_sparse_tensor(sparse_mx: spmatrix):
 
     Returns
     -------
-    torch.sparse.FloatTensor
+    torch.Tensor
         Sparse tensor in COO format with float32 dtype.
     """
     sparse_mx = sparse_mx.tocoo().astype(np.float32)
@@ -175,13 +185,13 @@ def compute_figure_size(
     cell_key: str = "cell",
     x_key: str = "x",
     y_key: str = "y",
-) -> Tuple[
+) -> tuple[
     float,
     float,
-    List[float],
-    List[float],
-    List[List[float]],
-    List[List[float]],
+    list[float],
+    list[float],
+    list[list[float]],
+    list[list[float]],
     float,
     float,
 ]:

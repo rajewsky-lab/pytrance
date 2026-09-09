@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
 
 import matplotlib.pyplot as plt
@@ -35,7 +36,6 @@ def _prepare_hue_coloring(
         return cell_df, None, genes_colors
 
     else:
-        # hue is a column name - return it as string, not list
         return cell_df, hue, None
 
 
@@ -76,7 +76,6 @@ def _setup_subplot_axis(
     norm_height = sh / fig_height
     ax = fig.add_axes([norm_left, norm_bottom, norm_width, norm_height])
 
-    # Determine coordinates for axis limits - use boundary if available, otherwise use spots
     if cell_boundaries is not None:
         # Extract boundary coordinates
         if type(cell_boundaries) is list:
@@ -853,3 +852,68 @@ def pairwise_clq_heatmap(
             return heatmap
         else:
             return
+
+
+def elbow_curve(
+    clusters: Sequence[int],
+    wcss_values: Sequence[float],
+    x_knee: Optional[float],
+) -> None:
+    """Plot the within-cluster sum of squares (WCSS) elbow curve.
+
+    Parameters
+    ----------
+    clusters : array-like
+        Number of clusters evaluated.
+    wcss_values : array-like
+        WCSS values for each evaluated cluster count.
+    x_knee : float or None
+        Suggested elbow point to draw as a vertical reference line.
+
+    Returns
+    -------
+    None
+    """
+    plt.plot(clusters, wcss_values, marker="o")
+    plt.axvline(x_knee, linestyle="--", c="black", label="suggestion")
+    plt.legend()
+    plt.xlabel("number of clusters")
+    plt.ylabel("Within-cluster sum of squares")
+
+
+def elbow_curve_leiden(
+    wcss_df: DataFrame,
+    step_size: float,
+    x_knee: Optional[float],
+) -> None:
+    """Plot the Leiden resolution elbow curve.
+
+    Parameters
+    ----------
+    wcss_df : DataFrame
+        DataFrame containing the resolution, WCSS, and cluster counts.
+    step_size : float
+        Resolution step used to construct the grid of values.
+    x_knee : float or None
+        Suggested elbow point to draw as a vertical reference line.
+
+    Returns
+    -------
+    None
+    """
+    n_decimals = abs(Decimal(str(step_size)).as_tuple().exponent)
+    plt.plot(wcss_df["resolution"], wcss_df["wcss"], marker="o")
+    plt.axvline(x_knee, linestyle="--", c="black", label="suggestion")
+    plt.legend()
+    plt.xlabel("resolution parameter\n(number of clusters)")
+    plt.ylabel("Within-cluster sum of squares")
+    plt.title("WCSS for Leiden clustering across resolutions")
+    plt.xticks(
+        wcss_df["resolution"],
+        [
+            f'{round(res, n_decimals)}\n({nc})'
+            for res, nc in zip(wcss_df["resolution"], wcss_df["n_clusters"])
+        ],
+    )
+    plt.grid(True)
+    plt.show()

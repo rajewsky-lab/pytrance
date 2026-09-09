@@ -1,12 +1,12 @@
 """pyTrance: subcellular spatial transcriptomics analysis."""
 
-from .cell_score import clq, clq_pairwise, clq_significance
 from . import data
-from .gnn import train_epoch
-from .utils import sparse_mx_to_torch_sparse_tensor
-from .models import DGI
-from . import tools as tl
 from . import plotting as pl
+from . import tools as tl
+from .cell_score import clq, clq_pairwise, clq_significance
+from .gnn import train_epoch
+from .models import DGI
+from .utils import sparse_mx_to_torch_sparse_tensor
 
 __all__ = [
     "clq", "clq_pairwise", "clq_significance",

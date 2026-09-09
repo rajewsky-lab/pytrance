@@ -1,11 +1,11 @@
 from itertools import combinations
 from multiprocessing import Manager, Process
-from typing import Any, Dict, List, Optional, Sequence, Tuple, Union
+from typing import Any, Optional, Sequence, Union
 
 import numpy as np
 from anndata import AnnData
 from pandas import DataFrame
-from scipy.sparse import spmatrix
+from scipy.sparse import issparse, spmatrix
 from tqdm import tqdm
 
 from .utils import get_neighbors
@@ -23,8 +23,9 @@ def clq_pairwise(
     min_counts: int = 2,
     n_processes: int = 1,
     seed: int = 808,
+    distance_weighted: bool = False,
     **kwargs: Any,
-) -> Tuple[Dict, Dict]:
+) -> tuple[dict, dict]:
     """Compute co-localization quotient (CLQ) scores between gene pairs.
 
     Parameters
@@ -53,6 +54,11 @@ def clq_pairwise(
         Number of parallel processes for computation. Default is 1.
     seed : int, optional
         Random seed for reproducibility. Default is 808.
+    distance_weighted : bool, optional
+        If True, construct or interpret the neighbor graph in distance mode and
+        weight each neighboring transcript pair by inverse normalized distance,
+        ``1 / (distance / radius)``, so weights are relative to the selected
+        radius. Default is False.
     **kwargs
         Additional keyword arguments passed to clq().
 
@@ -62,7 +68,7 @@ def clq_pairwise(
         - pairwise_clqs : dict
             Dictionary mapping gene pairs to dictionaries containing 'clqs', 'clqs_adj',
             and 'clqs_perm' (raw, adjusted, and permuted CLQ scores by cell).
-        - aggregated_norm_clqs : dict
+        - aggregated_adj_clqs : dict
             Aggregated statistics with 'mean' and 'median' keys, mapping gene pairs
             to aggregated normalized CLQ scores.
     """
@@ -97,12 +103,13 @@ def clq_pairwise(
             n_neighbors=n_neighbors,
             radius=radius,
             n_permutations=n_permutations,
+            pairwise=True,
             cell_key=cell_key,
             cat_key=cat_key,
             seed=seed,
-            pairwise=True,
             verbose=0,
             n_processes=n_processes,
+            distance_weighted=distance_weighted,
             **kwargs,
         )
         pairwise_clqs[gene_pair] = {
@@ -112,20 +119,20 @@ def clq_pairwise(
         }
 
     # for each pair aggregate (mean or median) normalized clq scores
-    aggregated_norm_clqs = {"mean": {}, "median": {}}
+    aggregated_adj_clqs = {"mean": {}, "median": {}}
     for pair, clq_dicts in pairwise_clqs.items():
         clqs_adj_vals = list(clq_dicts["clqs_adj"].values())
-        aggregated_norm_clqs["median"][pair] = np.median(clqs_adj_vals)
-        aggregated_norm_clqs["mean"][pair] = np.mean(clqs_adj_vals)
+        aggregated_adj_clqs["median"][pair] = np.median(clqs_adj_vals)
+        aggregated_adj_clqs["mean"][pair] = np.mean(clqs_adj_vals)
         if radius is not None:  # symmetric
-            aggregated_norm_clqs["median"][(pair[1], pair[0])] = aggregated_norm_clqs[
+            aggregated_adj_clqs["median"][(pair[1], pair[0])] = aggregated_adj_clqs[
                 "median"
             ][pair]
-            aggregated_norm_clqs["mean"][(pair[1], pair[0])] = aggregated_norm_clqs[
+            aggregated_adj_clqs["mean"][(pair[1], pair[0])] = aggregated_adj_clqs[
                 "mean"
             ][pair]
 
-    return pairwise_clqs, aggregated_norm_clqs
+    return pairwise_clqs, aggregated_adj_clqs
 
 
 def clq(
@@ -136,6 +143,7 @@ def clq(
     n_neighbors: Optional[int] = None,
     n_permutations: int = 0,
     n_processes: int = 1,
+    pairwise: bool = False,
     cell_key: str = "cell",
     cat_key: str = "gene",
     x_key: str = "x",
@@ -143,8 +151,9 @@ def clq(
     z_key: str = "z",
     verbose: int = 1,
     seed: int = 808,
+    distance_weighted: bool = False,
     **kwargs: Any,
-) -> Union[Dict, Tuple[Dict, Dict, Dict]]:
+) -> Union[dict, tuple[dict, dict, dict]]:
     """Compute co-localization quotient (CLQ) scores across all cells.
 
     Parameters
@@ -179,6 +188,10 @@ def clq(
         Verbosity level (0=silent, 1+=with progress bars). Default is 1.
     seed : int, optional
         Random seed for permutation testing. Default is 808.
+    distance_weighted : bool, optional
+        If True, use a distance-based neighbor graph and weight neighbors by
+        inverse normalized distance, ``1 / (distance / radius)``, before
+        summing c_ab. Default is False.
     **kwargs
         Additional keyword arguments passed to clq_single_cell().
 
@@ -212,8 +225,13 @@ def clq(
     categories = genes
     if type(categories) is str:  # single gene passed as string -> self co-localization
         categories = [categories]
-    cat_a = categories
-    cat_b = categories
+    elif len(categories) == 2 and pairwise: # pair of genes or patterns
+        cat_a = [categories[0]]
+        cat_b = [categories[1]]
+        print('pairwise')
+    else:
+        cat_a = categories
+        cat_b = categories
 
     if n_permutations:
         cell_clqs_permuted = {}
@@ -241,6 +259,7 @@ def clq(
                     y_key=y_key,
                     z_key=z_key,
                     seed=seed,
+                    distance_weighted=distance_weighted,
                     **kwargs,
                 )
                 shared_norm[cell] = clq_norm
@@ -258,6 +277,7 @@ def clq(
                     y_key=y_key,
                     z_key=z_key,
                     seed=seed,
+                    distance_weighted=distance_weighted,
                     **kwargs,
                 )
             shared_clqs[cell] = clq_val
@@ -328,8 +348,9 @@ def clq_single_cell(
     y_key: str = "y",
     z_key: str = "z",
     seed: int = 808,
+    distance_weighted: bool = False,
     **kwargs: Any,
-) -> Union[float, Tuple[float, float, List]]:
+) -> Union[float, tuple[float, float, list]]:
     """Compute co-localization quotient (CLQ) for a single cell.
 
     Parameters
@@ -359,6 +380,11 @@ def clq_single_cell(
         Column name in cell_df for z coordinates. Default is "z".
     seed : int, optional
         Random seed for permutation testing. Default is 808.
+    distance_weighted : bool, optional
+        If True, assume the graph stores distances and convert edge weights to
+        inverse normalized distances, ``1 / (distance / radius)``, such that
+        closer neighbors contribute more to c_ab relative to the radius.
+        Default is False.
     **kwargs
         Additional keyword arguments passed to get_neighbors().
 
@@ -394,6 +420,8 @@ def clq_single_cell(
             y_key=y_key,
             z_key=z_key,
             n_jobs=1,  # disable parallel in multiprocessing context
+            mode="distance" if distance_weighted else "connectivity",
+            distance_weighted=distance_weighted
         )
     else:  # in case provided graph includes not only given cell
         graph = graph[np.ix_(cell_df.index.astype(int), cell_df.index.astype(int))]
@@ -445,10 +473,10 @@ def clq_single_cell(
 
 
 def clq_significance(
-    cell_clqs: Dict,
-    cell_clqs_permuted: Dict,
+    cell_clqs: dict,
+    cell_clqs_permuted: dict,
     percentile: float = 5,
-) -> Tuple[List, Dict]:
+) -> tuple[list, dict]:
     """Assess statistical significance of CLQ scores using permutation distributions.
 
     Parameters
@@ -459,31 +487,33 @@ def clq_significance(
         Permutation distributions per cell, mapping cell IDs to lists of
         CLQs from permutations.
     percentile : float, optional
-        Percentile threshold for significance testing. A cell is significant if
-        its observed CLQ is beyond the [percentile, 100-percentile] range.
+        Lower-tail percentile used for the two-sided test. A cell is significant
+        if its empirical p-value is at most ``2 * percentile / 100``.
         Default is 5.
 
     Returns
     -------
     tuple
         - significant_clq_cells : list - Cell IDs with significant CLQ scores
-        - observed_vs_percentile : dict - Fold-change between observed CLQ and
-          the nearest percentile threshold for each cell (1.0 for non-significant)
+        - p_values : dict - Two-sided empirical permutation p-values by cell
     """
 
-    observed_vs_percentile = {}
+    if percentile <= 0:
+        raise ValueError("percentile must be greater than 0")
+
+    p_values = {}
     significant_clq_cells = []
     for cell, clqs in cell_clqs_permuted.items():
-        lower_percentile = np.percentile(clqs, percentile)
-        upper_percentile = np.percentile(clqs, 100 - percentile)
+        permutation_clqs = np.asarray(clqs)
         observed_clq = cell_clqs[cell]
-        if observed_clq < lower_percentile:
-            observed_vs_percentile[cell] = lower_percentile / observed_clq
+        n_permutations = permutation_clqs.size
+        null_at_or_below_observed = np.sum(permutation_clqs <= observed_clq)
+        null_at_or_above_observed = np.sum(permutation_clqs >= observed_clq)
+        lower_p = (null_at_or_below_observed + 1) / (n_permutations + 1)
+        upper_p = (null_at_or_above_observed + 1) / (n_permutations + 1)
+        p_value = min(1.0, 2 * min(lower_p, upper_p))
+        p_values[cell] = p_value
+        if p_value <= 2 * percentile / 100:
             significant_clq_cells.append(cell)
-        elif observed_clq > upper_percentile:
-            observed_vs_percentile[cell] = observed_clq / upper_percentile
-            significant_clq_cells.append(cell)
-        else:
-            observed_vs_percentile[cell] = 1
 
-    return significant_clq_cells, observed_vs_percentile
+    return significant_clq_cells, p_values

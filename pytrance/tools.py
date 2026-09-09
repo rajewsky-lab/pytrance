@@ -2,14 +2,16 @@ from typing import Any, Dict, Optional, Sequence, Tuple
 
 import numpy as np
 from anndata import AnnData
+from kneed import KneeLocator
 from pandas import DataFrame
 from scanpy.pp import neighbors
 from scanpy.tl import leiden
+from shapely import Polygon
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from sklearn.decomposition import PCA
 from tqdm import tqdm
 
-from .plotting import dendrogram
+from .plotting import dendrogram, elbow_curve, elbow_curve_leiden
 from .utils import get_gene_subclusters
 
 
@@ -121,6 +123,7 @@ def cluster_gene_embeddings_leiden(
     return_labels: bool = False,
     key_added: str = "leiden",
     flavor: str = 'igraph',
+    verbose: int = 1,
     seed: int = 808,
 ) -> Optional[np.ndarray]:
     """Cluster gene embeddings using Leiden algorithm.
@@ -151,14 +154,19 @@ def cluster_gene_embeddings_leiden(
         Cluster labels if return_labels is True, otherwise None.
     """
 
-    embeds_adata = AnnData(embeds)
+    
+    embeds_c = embeds.copy()
+    embeds_c.index = embeds_c.index.astype('str')
+    embeds_adata = AnnData(embeds_c)
+    #print(embeds_adata.obs.index)
+    embeds_adata.obs.index = embeds_adata.obs.index.astype('str')
     neighbors(embeds_adata, n_neighbors=n_neighbors)
     leiden(embeds_adata, resolution=resolution, key_added=key_added, flavor=flavor, random_state=seed)
-
     if adata is not None:
-        adata.var[key_added] = embeds_adata.obs[key_added].astype("int")
+        adata.var[key_added] = list(embeds_adata.obs[key_added].astype("int"))
 
-    print(f"detected {adata.var[key_added].nunique()} clusters")
+    if verbose == 1:
+        print(f"detected {embeds_adata.obs[key_added].nunique()} clusters")
 
     if return_labels:
         return embeds_adata.obs[key_added]
@@ -198,8 +206,8 @@ def embedding_pca(
 def subcluster(
     corr_array: np.ndarray,
     genes: Sequence[Any],
-    distance_threshold: float = 0.2,
-    n_subclusters: Optional[int] = None,
+    distance_threshold: float = None,
+    n_subclusters: Optional[int] = 2,
     plot_tree: bool = True,
     gene_names_ordered: Optional[Sequence[Any]] = None,
     metric: str = "euclidean",
@@ -253,3 +261,176 @@ def subcluster(
         genes=genes, clustering_model=clustering_model
     )
     return cluster_gene_sets_subset
+
+def elbow(
+    embeds: DataFrame,
+    algo: str = "kmeans",
+    min_clusters: int = 2,
+    max_clusters: int = 10,
+    plot_curve: bool = True,
+    return_results: bool = False,
+    seed: int = 808,
+) -> Optional[Tuple[list, list, Optional[int]]]:
+    """Estimate the number of clusters using an elbow curve.
+
+    Parameters
+    ----------
+    embeds : DataFrame
+        Gene embedding matrix.
+    algo : {'kmeans', 'agglomerative'}, optional
+        Clustering algorithm. Default is "kmeans".
+    min_clusters : int, optional
+        Smallest number of clusters to evaluate. Default is 2.
+    max_clusters : int, optional
+        Largest number of clusters to evaluate. Default is 10.
+    plot_curve : bool, optional
+        If True, plot the WCSS values and detected knee. Default is True.
+    return_results : bool, optional
+        If True, return the evaluated cluster counts, WCSS values, and knee.
+        Default is False.
+    seed : int, optional
+        Random seed for reproducibility. Default is 808.
+
+    Returns
+    -------
+    tuple or None
+        A tuple containing cluster counts, WCSS values, and the suggested
+        number of clusters if ``return_results`` is True; otherwise None.
+    """
+    wcss_values = []
+    clusters = list(range(min_clusters, max_clusters+1))
+    for n_clusters in clusters:
+        labels = cluster_gene_embeddings(embeds=embeds,
+                                n_clusters=n_clusters,
+                                algo=algo,
+                                return_labels=True,
+                                seed=seed)
+        
+        cluster_centers = embeds.groupby(labels).transform('mean')
+        wcss = ((embeds - cluster_centers) ** 2).sum(axis=1).sum()
+        wcss_values.append(wcss)
+        
+    kl = KneeLocator(clusters, wcss_values, curve="convex", direction="decreasing")
+    knee = kl.knee
+    if plot_curve:
+        elbow_curve(clusters, wcss_values, knee)
+        
+    if return_results:
+        return clusters, wcss_values, knee
+    
+    
+def elbow_leiden(
+    embeds: DataFrame,
+    min_resolution: float = 0.1,
+    max_resolution: float = 1,
+    step_size: float = 0.1,
+    plot_curve: bool = True,
+    return_results: bool = False,
+    seed: int = 808,
+) -> Optional[Tuple[DataFrame, float]]:
+    """Estimate the Leiden resolution using an elbow curve.
+
+    Parameters
+    ----------
+    embeds : DataFrame
+        Gene embedding matrix.
+    min_resolution : float, optional
+        Smallest Leiden resolution to evaluate. Default is 0.1.
+    max_resolution : float, optional
+        Largest Leiden resolution to evaluate. Default is 1.
+    step_size : float, optional
+        Increment between consecutive resolution values. Default is 0.1.
+    plot_curve : bool, optional
+        If True, plot WCSS values across resolutions. Default is True.
+    return_results : bool, optional
+        If True, return the WCSS results and suggested resolution. Default is
+        False.
+    seed : int, optional
+        Random seed for reproducibility. Default is 808.
+
+    Returns
+    -------
+    tuple or None
+        A tuple containing the WCSS results DataFrame and suggested resolution
+        if ``return_results`` is True; otherwise None.
+    """
+    
+    resolution_values = np.arange(min_resolution, max_resolution+step_size, step_size)
+    wcss_values = []
+    n_clusters = []
+
+    for resolution in resolution_values:
+        labels = cluster_gene_embeddings_leiden(
+            embeds=embeds,
+            resolution=resolution,
+            n_neighbors=10,
+            return_labels=True,
+            verbose=0,
+            seed=seed
+        )
+
+        cluster_centers = embeds.groupby(labels).transform('mean')
+        wcss = ((embeds - cluster_centers) ** 2).sum(axis=1).sum()
+        wcss_values.append(wcss)
+        n_clusters.append(len(set(labels)))
+
+
+    wcss_df = DataFrame({'resolution': resolution_values, 'wcss': wcss_values, 'n_clusters': n_clusters})
+    # compute knee based on unique wcss values. otherwise algo finds plateau
+    wcss_df_unique = wcss_df.drop_duplicates(subset=['wcss'])
+    kl = KneeLocator(wcss_df_unique['resolution'], wcss_df_unique['wcss'], curve="convex", direction="decreasing")
+    knee = kl.knee
+    
+    # if no knee is returned, use lowest resolution
+    if knee is None:
+        knee = min_resolution
+    
+    if plot_curve:
+        elbow_curve_leiden(wcss_df, step_size, knee)
+        
+    if return_results:
+        return wcss_df, knee
+    
+    
+def suggested_radius(
+    boundaries: DataFrame,
+    cell_boundaries: bool = False,
+    return_radius: bool = False,
+) -> Optional[int]:
+    """Calculate a suggested radius from cell or nucleus boundaries.
+
+    Parameters
+    ----------
+    boundaries : DataFrame
+        Boundary coordinates, with x and y coordinates stored for each object.
+    cell_boundaries : bool, optional
+        If True, calculate a radius based on cell boundaries; otherwise calculate a
+        radius based on nucleus boundaries. Default is False.
+    return_radius : bool, optional
+        If True, return the suggested radius. Default is False.
+
+    Returns
+    -------
+    int or None
+        Suggested radius if ``return_radius`` is True; otherwise None.
+    """
+    
+    cell_rs = []
+    for c in range(boundaries.shape[0]):
+        x_coords = boundaries.iloc[c].iloc[0]
+        y_coords = boundaries.iloc[c].iloc[1]
+        if x_coords[0] is None or y_coords[0] is None:
+            continue
+        p_area = Polygon(np.array((x_coords, y_coords)).T).area
+        cell_rs.append(np.sqrt(p_area / np.pi))
+    
+    if cell_boundaries:
+        radius = round(np.mean(cell_rs) / 4)
+        print('mean cell radius:', np.mean(cell_rs))
+    else:
+        radius = round(np.mean(cell_rs) / 2)
+        print('mean nuclei radius:', np.mean(cell_rs))
+    print('suggested radius:', radius)
+        
+    if return_radius:
+        return radius
