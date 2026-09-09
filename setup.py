@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="pytrance",
-    version="0.1.0",
+    version="0.2.0",
     description="pyTrance: framework for subcellular spatial transcriptomics analysis",
     author="",
     author_email="",
