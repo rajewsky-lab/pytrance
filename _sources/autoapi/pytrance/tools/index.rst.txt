@@ -14,6 +14,9 @@ Functions
    pytrance.tools.cluster_gene_embeddings_leiden
    pytrance.tools.embedding_pca
    pytrance.tools.subcluster
+   pytrance.tools.elbow
+   pytrance.tools.elbow_leiden
+   pytrance.tools.suggested_radius
 
 
 Module Contents
@@ -55,7 +58,7 @@ Module Contents
    :rtype: ndarray or None
 
 
-.. py:function:: cluster_gene_embeddings_leiden(embeds: numpy.ndarray, resolution: float = 1, n_neighbors: int = 5, adata: Optional[anndata.AnnData] = None, return_labels: bool = False, key_added: str = 'leiden', flavor: str = 'igraph', seed: int = 808) -> Optional[numpy.ndarray]
+.. py:function:: cluster_gene_embeddings_leiden(embeds: numpy.ndarray, resolution: float = 1, n_neighbors: int = 5, adata: Optional[anndata.AnnData] = None, return_labels: bool = False, key_added: str = 'leiden', flavor: str = 'igraph', verbose: int = 1, seed: int = 808) -> Optional[numpy.ndarray]
 
    Cluster gene embeddings using Leiden algorithm.
 
@@ -101,7 +104,7 @@ Module Contents
    :rtype: tuple
 
 
-.. py:function:: subcluster(corr_array: numpy.ndarray, genes: Sequence[Any], distance_threshold: float = 0.2, n_subclusters: Optional[int] = None, plot_tree: bool = True, gene_names_ordered: Optional[Sequence[Any]] = None, metric: str = 'euclidean', linkage: str = 'ward') -> Dict
+.. py:function:: subcluster(corr_array: numpy.ndarray, genes: Sequence[Any], distance_threshold: float = None, n_subclusters: Optional[int] = 2, plot_tree: bool = True, gene_names_ordered: Optional[Sequence[Any]] = None, metric: str = 'euclidean', linkage: str = 'ward') -> Dict
 
    Perform hierarchical clustering on gene embedding correlations.
 
@@ -126,5 +129,71 @@ Module Contents
 
    :returns: Dictionary mapping subcluster IDs to lists of genes in each subcluster.
    :rtype: dict
+
+
+.. py:function:: elbow(embeds: pandas.DataFrame, algo: str = 'kmeans', min_clusters: int = 2, max_clusters: int = 10, plot_curve: bool = True, return_results: bool = False, seed: int = 808) -> Optional[Tuple[list, list, Optional[int]]]
+
+   Estimate the number of clusters using an elbow curve.
+
+   :param embeds: Gene embedding matrix.
+   :type embeds: DataFrame
+   :param algo: Clustering algorithm. Default is "kmeans".
+   :type algo: {'kmeans', 'agglomerative'}, optional
+   :param min_clusters: Smallest number of clusters to evaluate. Default is 2.
+   :type min_clusters: int, optional
+   :param max_clusters: Largest number of clusters to evaluate. Default is 10.
+   :type max_clusters: int, optional
+   :param plot_curve: If True, plot the WCSS values and detected knee. Default is True.
+   :type plot_curve: bool, optional
+   :param return_results: If True, return the evaluated cluster counts, WCSS values, and knee.
+                          Default is False.
+   :type return_results: bool, optional
+   :param seed: Random seed for reproducibility. Default is 808.
+   :type seed: int, optional
+
+   :returns: A tuple containing cluster counts, WCSS values, and the suggested
+             number of clusters if ``return_results`` is True; otherwise None.
+   :rtype: tuple or None
+
+
+.. py:function:: elbow_leiden(embeds: pandas.DataFrame, min_resolution: float = 0.1, max_resolution: float = 1, step_size: float = 0.1, plot_curve: bool = True, return_results: bool = False, seed: int = 808) -> Optional[Tuple[pandas.DataFrame, float]]
+
+   Estimate the Leiden resolution using an elbow curve.
+
+   :param embeds: Gene embedding matrix.
+   :type embeds: DataFrame
+   :param min_resolution: Smallest Leiden resolution to evaluate. Default is 0.1.
+   :type min_resolution: float, optional
+   :param max_resolution: Largest Leiden resolution to evaluate. Default is 1.
+   :type max_resolution: float, optional
+   :param step_size: Increment between consecutive resolution values. Default is 0.1.
+   :type step_size: float, optional
+   :param plot_curve: If True, plot WCSS values across resolutions. Default is True.
+   :type plot_curve: bool, optional
+   :param return_results: If True, return the WCSS results and suggested resolution. Default is
+                          False.
+   :type return_results: bool, optional
+   :param seed: Random seed for reproducibility. Default is 808.
+   :type seed: int, optional
+
+   :returns: A tuple containing the WCSS results DataFrame and suggested resolution
+             if ``return_results`` is True; otherwise None.
+   :rtype: tuple or None
+
+
+.. py:function:: suggested_radius(boundaries: pandas.DataFrame, cell_boundaries: bool = False, return_radius: bool = False) -> Optional[int]
+
+   Calculate a suggested radius from cell or nucleus boundaries.
+
+   :param boundaries: Boundary coordinates, with x and y coordinates stored for each object.
+   :type boundaries: DataFrame
+   :param cell_boundaries: If True, calculate a radius based on cell boundaries; otherwise calculate a
+                           radius based on nucleus boundaries. Default is False.
+   :type cell_boundaries: bool, optional
+   :param return_radius: If True, return the suggested radius. Default is False.
+   :type return_radius: bool, optional
+
+   :returns: Suggested radius if ``return_radius`` is True; otherwise None.
+   :rtype: int or None
 
 

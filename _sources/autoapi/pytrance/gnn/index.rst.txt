@@ -9,13 +9,21 @@ Functions
 
 .. autoapisummary::
 
+   pytrance.gnn.seed_everything
    pytrance.gnn.train_epoch
    pytrance.gnn.compute_embeddings
    pytrance.gnn.train
+   pytrance.gnn.neighborhood_aggregation_single_cell
+   pytrance.gnn.neighborhood_aggregation
 
 
 Module Contents
 ---------------
+
+.. py:function:: seed_everything(seed: int) -> None
+
+   Seed supported random-number generators and deterministic backends.
+
 
 .. py:function:: train_epoch(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, optimiser: torch.optim.Optimizer, device: torch.device, layer_type: str = 'gcn', sparse: bool = True, corruption: str = 'feature_shuffling', seed: int = 808) -> Tuple[float, numpy.ndarray]
 
@@ -46,7 +54,7 @@ Module Contents
    :rtype: tuple
 
 
-.. py:function:: compute_embeddings(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, embeds_shape: Tuple[int, Ellipsis], layer_type: str = 'gcn') -> numpy.ndarray
+.. py:function:: compute_embeddings(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, embeds_shape: Tuple[int, ...], layer_type: str = 'gcn') -> numpy.ndarray
 
    Compute spot embeddings using trained model.
 
@@ -65,7 +73,7 @@ Module Contents
    :rtype: ndarray
 
 
-.. py:function:: train(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, optimiser: torch.optim.Optimizer, device: torch.device, embeds_shape: Tuple[int, Ellipsis], n_epochs: int, sparse: bool = True, layer_type: str = 'gcn', dir_path: Optional[str] = None, corruption: str = 'feature_shuffling', save_steps: int = 10, save_final: bool = True) -> None
+.. py:function:: train(model: torch.nn.Module, train_loader: torch.utils.data.DataLoader, optimiser: torch.optim.Optimizer, device: torch.device, embeds_shape: Tuple[int, ...], n_epochs: int, sparse: bool = True, layer_type: str = 'gcn', dir_path: Optional[str] = None, corruption: str = 'feature_shuffling', save_steps: int = 10, save_final: bool = True, seed: int = 808) -> None
 
    Train graph neural network model with contrastive learning.
 
@@ -95,9 +103,51 @@ Module Contents
    :type save_steps: int, optional
    :param save_final: Whether to compute and save the embeddings after training. Default is True.
    :type save_final: bool, optional
+   :param seed: Random seed used for reproducible training. Default is 808.
+   :type seed: int, optional
 
    :returns: Saves training artifacts to disk including model checkpoints, embeddings,
              and TensorBoard event files.
    :rtype: None
+
+
+.. py:function:: neighborhood_aggregation_single_cell(node_features: numpy.ndarray, adj_cell: scipy.sparse.spmatrix) -> numpy.ndarray
+
+   Aggregate node features over a sparse adjacency matrix.
+
+   :param node_features: Feature matrix with one row per node.
+   :type node_features: ndarray
+   :param adj_cell: Sparse adjacency matrix describing the neighbors of each node.
+   :type adj_cell: scipy.sparse.spmatrix
+
+   :returns: Aggregated feature matrix with one row per node.
+   :rtype: ndarray
+
+
+.. py:function:: neighborhood_aggregation(transcripts_df: pandas.DataFrame, graph_kwargs: dict[str, Any], cell_key: str = 'cell', gene_key: str = 'gene', x_key: str = 'x', y_key: str = 'y', z_key: Optional[str] = None) -> pandas.DataFrame
+
+   Aggregate transcript features over spatial transcript neighbors.
+
+   :param transcripts_df: Transcript table containing cell, gene, and coordinate columns.
+   :type transcripts_df: DataFrame
+   :param graph_kwargs: Keyword arguments passed to :func:`get_neighbors` when constructing
+                        each cell's spatial graph.
+   :type graph_kwargs: dict
+   :param cell_key: Column identifying cells. Default is "cell".
+   :type cell_key: str, optional
+   :param gene_key: Column identifying genes. Default is "gene".
+   :type gene_key: str, optional
+   :param x_key: Column containing x coordinates. Default is "x".
+   :type x_key: str, optional
+   :param y_key: Column containing y coordinates. Default is "y".
+   :type y_key: str, optional
+   :param z_key: Column containing z coordinates. If provided, a 3D spatial graph is
+                 constructed and the z coordinate is included in the output. Default
+                 is None.
+   :type z_key: str, optional
+
+   :returns: Transcript table containing the original cell, gene, and coordinate
+             columns followed by one neighbor-aggregation feature column per gene.
+   :rtype: DataFrame
 
 

@@ -26,18 +26,18 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=cb8930eaaf36d9849b67" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
   
   <!-- So that users can add custom icons -->
-  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=cb8930eaaf36d9849b67"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67" />
 
     <script src="../../_static/documentation_options.js?v=01f34227"></script>
     <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
@@ -164,11 +164,18 @@
       
         <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -181,8 +188,7 @@
           
           
           
-          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
       
@@ -255,11 +261,18 @@
         
           <div class="navbar-item">
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button></div>
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -272,8 +285,7 @@
           
           
           
-          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
-            <span class="sr-only">GitHub</span></a>
+          <a href="https://github.com/rajewsky-lab/pyTrance" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
         </li>
 </ul></div>
         
@@ -337,64 +349,68 @@
                 <article class="bd-article">
                   
   <h1>Source code for pytrance.utils</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Tuple</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Sequence</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">anndata</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnnData</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataFrame</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csr_matrix</span><span class="p">,</span> <span class="n">spmatrix</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">kneighbors_graph</span><span class="p">,</span> <span class="n">radius_neighbors_graph</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Size</span><span class="p">,</span> <span class="n">from_numpy</span><span class="p">,</span> <span class="n">sparse_coo_tensor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Size</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">from_numpy</span><span class="p">,</span> <span class="n">sparse_coo_tensor</span>
 
 
 <div class="viewcode-block" id="get_neighbors">
 <a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.get_neighbors">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_neighbors</span><span class="p">(</span>
     <span class="n">cell_df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span>
-    <span class="n">radius</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">radius</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">n_neighbors</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
-    <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;connectivity&quot;</span><span class="p">,</span>
-    <span class="n">x_key</span><span class="o">=</span><span class="s2">&quot;x_pos&quot;</span><span class="p">,</span>
-    <span class="n">y_key</span><span class="o">=</span><span class="s2">&quot;y_pos&quot;</span><span class="p">,</span>
-    <span class="n">z_key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"euclidean"</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"connectivity"</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"x_pos"</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"y_pos"</span><span class="p">,</span>
+    <span class="n">z_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">n_jobs</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">include_self</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">csr_matrix</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a spatial neighbor graph from transcript coordinates.</span>
+    <span class="n">distance_weighted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">csr_matrix</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Build a spatial neighbor graph from transcript coordinates.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    cell_df : DataFrame</span>
 <span class="sd">        DataFrame containing transcript information of input cell.</span>
-<span class="sd">    radius : int, optional</span>
-<span class="sd">        Search radius for neighbors. If provided, radius_neighbors_graph is used.</span>
-<span class="sd">        Default is 2.</span>
+<span class="sd">    radius : int or None, optional</span>
+<span class="sd">        Search radius for neighbors. If provided, ``radius_neighbors_graph`` is</span>
+<span class="sd">        used. If None, ``kneighbors_graph`` is used instead. Default is 2.</span>
 <span class="sd">    n_neighbors : int, optional</span>
-<span class="sd">        Number of nearest neighbors to consider when radius is None.</span>
+<span class="sd">        Number of nearest neighbors to consider when ``radius`` is None.</span>
 <span class="sd">        Default is 20.</span>
 <span class="sd">    metric : str, optional</span>
-<span class="sd">        Distance metric to use. Default is &quot;euclidean&quot;.</span>
+<span class="sd">        Distance metric to use. Default is "euclidean".</span>
 <span class="sd">    mode : str, optional</span>
-<span class="sd">        Type of graph returned. &quot;connectivity&quot; returns binary adjacency matrix,</span>
-<span class="sd">        &quot;distance&quot; returns distance values. Default is &quot;connectivity&quot;.</span>
+<span class="sd">        Type of graph returned. "connectivity" returns binary adjacency matrix,</span>
+<span class="sd">        "distance" returns distance values. Default is "connectivity".</span>
 <span class="sd">    x_key : str, optional</span>
-<span class="sd">        Column name for x coordinates in cell_df. Default is &quot;x_pos&quot;.</span>
+<span class="sd">        Column name for x coordinates in ``cell_df``. Default is "x_pos".</span>
 <span class="sd">    y_key : str, optional</span>
-<span class="sd">        Column name for y coordinates in cell_df. Default is &quot;y_pos&quot;.</span>
+<span class="sd">        Column name for y coordinates in ``cell_df``. Default is "y_pos".</span>
 <span class="sd">    z_key : str, optional</span>
-<span class="sd">        Column name for z coordinates in cell_df. If None, 2D coordinates are used.</span>
-<span class="sd">        Default is None.</span>
+<span class="sd">        Column name for z coordinates in ``cell_df``. If None, 2D coordinates are</span>
+<span class="sd">        used. Default is None.</span>
 <span class="sd">    n_jobs : int, optional</span>
 <span class="sd">        Number of parallel jobs for neighbor computation. Default is 1.</span>
 <span class="sd">    include_self : bool, optional</span>
 <span class="sd">        Whether to include self-loops in the graph. Default is False.</span>
+<span class="sd">    distance_weighted : bool, optional</span>
+<span class="sd">        If True, rescale edge weights between 0 and 1 based on the neighbor</span>
+<span class="sd">        distance. Default is False.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    tuple[csr_matrix, csr_matrix]</span>
+<span class="sd">    csr_matrix</span>
 <span class="sd">        Sparse adjacency matrix in CSR format representing the neighbor graph.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
 
     <span class="k">if</span> <span class="n">z_key</span><span class="p">:</span>
         <span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span>
@@ -412,6 +428,12 @@
             <span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">,</span>
             <span class="n">include_self</span><span class="o">=</span><span class="n">include_self</span><span class="p">,</span>
         <span class="p">)</span>
+        <span class="c1"># normalize weights to range 0 (distance &gt;= radius) to 1 (distance  = 0)</span>
+        <span class="k">if</span> <span class="n">distance_weighted</span><span class="p">:</span>
+            <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+            <span class="c1">#graph.data = 1.0 / np.clip(graph.data / radius, 1e-12, None)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">graph</span><span class="o">.</span><span class="n">data</span> <span class="o">/</span> <span class="n">radius</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+            
     <span class="k">else</span><span class="p">:</span>  <span class="c1"># build graph based on nearest neighbors</span>
         <span class="n">graph</span> <span class="o">=</span> <span class="n">kneighbors_graph</span><span class="p">(</span>
             <span class="n">coords</span><span class="p">,</span>
@@ -429,7 +451,7 @@
 <div class="viewcode-block" id="get_gene_subclusters">
 <a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.get_gene_subclusters">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_gene_subclusters</span><span class="p">(</span><span class="n">genes</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">clustering_model</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Group genes by their assigned subclusters from a clustering model.</span>
+<span class="w">    </span><span class="sd">"""Group genes by their assigned subclusters from a clustering model.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -443,7 +465,7 @@
 <span class="sd">    dict</span>
 <span class="sd">        Dictionary mapping subcluster IDs to lists of genes in that subcluster.</span>
 <span class="sd">        Keys are unique cluster labels, values are lists of gene names.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">cluster_gene_groups_subset</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">for</span> <span class="n">subcluster</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">clustering_model</span><span class="o">.</span><span class="n">labels_</span><span class="p">):</span>
         <span class="n">cluster_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">clustering_model</span><span class="o">.</span><span class="n">labels_</span> <span class="o">==</span> <span class="n">subcluster</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -457,8 +479,8 @@
 <span class="c1"># from DGI</span>
 <div class="viewcode-block" id="sparse_mx_to_torch_sparse_tensor">
 <a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.sparse_mx_to_torch_sparse_tensor">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">sparse_mx_to_torch_sparse_tensor</span><span class="p">(</span><span class="n">sparse_mx</span><span class="p">:</span> <span class="n">spmatrix</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a scipy sparse matrix to a PyTorch sparse tensor.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sparse_mx_to_torch_sparse_tensor</span><span class="p">(</span><span class="n">sparse_mx</span><span class="p">:</span> <span class="n">spmatrix</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Convert a SciPy sparse matrix to a PyTorch sparse tensor.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -467,9 +489,9 @@
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    torch.sparse.FloatTensor</span>
+<span class="sd">    torch.Tensor</span>
 <span class="sd">        Sparse tensor in COO format with float32 dtype.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">sparse_mx</span> <span class="o">=</span> <span class="n">sparse_mx</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
     <span class="n">indices</span> <span class="o">=</span> <span class="n">from_numpy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">sparse_mx</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">sparse_mx</span><span class="o">.</span><span class="n">col</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">))</span>
     <span class="n">values</span> <span class="o">=</span> <span class="n">from_numpy</span><span class="p">(</span><span class="n">sparse_mx</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
@@ -481,7 +503,7 @@
 <div class="viewcode-block" id="get_tree_linkage">
 <a class="viewcode-back" href="../../autoapi/pytrance/utils/index.html#pytrance.utils.get_tree_linkage">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_tree_linkage</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a linkage matrix from a hierarchical clustering model.</span>
+<span class="w">    </span><span class="sd">"""Generate a linkage matrix from a hierarchical clustering model.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -493,7 +515,7 @@
 <span class="sd">    -------</span>
 <span class="sd">    ndarray</span>
 <span class="sd">        Linkage matrix</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># create the counts of samples under each node</span>
     <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">children_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
     <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">labels_</span><span class="p">)</span>
@@ -525,20 +547,20 @@
     <span class="n">col_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">row_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">boundary_padding</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="n">cell_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;cell&quot;</span><span class="p">,</span>
-    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span>
-    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span>
+    <span class="n">cell_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"cell"</span><span class="p">,</span>
+    <span class="n">x_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"x"</span><span class="p">,</span>
+    <span class="n">y_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"y"</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span>
     <span class="nb">float</span><span class="p">,</span>
     <span class="nb">float</span><span class="p">,</span>
-    <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
-    <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
-    <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
-    <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+    <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+    <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
+    <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span>
     <span class="nb">float</span><span class="p">,</span>
     <span class="nb">float</span><span class="p">,</span>
 <span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate optimized figure dimensions for multi-panel subplot layouts.</span>
+<span class="w">    </span><span class="sd">"""Calculate optimized figure dimensions for multi-panel subplot layouts.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -560,11 +582,11 @@
 <span class="sd">        Padding around data boundaries. If &lt; 1, treated as relative (fraction of range);</span>
 <span class="sd">        if &gt;= 1, treated as absolute units. Default is 1.</span>
 <span class="sd">    cell_key : str, optional</span>
-<span class="sd">        Column name in adata.obs for cell grouping. Default is &quot;cell&quot;.</span>
+<span class="sd">        Column name in adata.obs for cell grouping. Default is "cell".</span>
 <span class="sd">    x_key : str, optional</span>
-<span class="sd">        Column name in adata.obs for x coordinates. Default is &quot;x&quot;.</span>
+<span class="sd">        Column name in adata.obs for x coordinates. Default is "x".</span>
 <span class="sd">    y_key : str, optional</span>
-<span class="sd">        Column name in adata.obs for y coordinates. Default is &quot;y&quot;.</span>
+<span class="sd">        Column name in adata.obs for y coordinates. Default is "y".</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -578,7 +600,7 @@
 <span class="sd">        - subplot_widths : list[list[float]] - Width of each subplot</span>
 <span class="sd">        - col_padding : float - Applied column padding</span>
 <span class="sd">        - row_padding : float - Applied row padding</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># max figure size scales with the grid dimensions (cols -&gt; width, rows -&gt; height)</span>
     <span class="n">max_fig_width</span> <span class="o">=</span> <span class="n">n_cols</span> <span class="o">*</span> <span class="mi">5</span>
     <span class="n">max_fig_height</span> <span class="o">=</span> <span class="n">n_rows</span> <span class="o">*</span> <span class="mi">5</span>
@@ -693,8 +715,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=cb8930eaaf36d9849b67"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=cb8930eaaf36d9849b67"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -718,7 +740,7 @@
         <div class="footer-item">
 <p class="theme-version">
   <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.21.0.
 </p></div>
       
     </div>

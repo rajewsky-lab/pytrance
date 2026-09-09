@@ -16,5 +16,6 @@ Submodules
    :maxdepth: 1
 
    /autoapi/pytrance/data/celldata/index
+   /autoapi/pytrance/data/example_dataset/index
 
 

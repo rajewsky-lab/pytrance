@@ -15,6 +15,8 @@ Functions
    pytrance.plotting.transcripts_histogram
    pytrance.plotting.dendrogram
    pytrance.plotting.pairwise_clq_heatmap
+   pytrance.plotting.elbow_curve
+   pytrance.plotting.elbow_curve_leiden
 
 
 Module Contents
@@ -205,5 +207,33 @@ Module Contents
              - (False, True): Heatmap axes object
              - (True, True): Tuple of (DataFrame, heatmap axes)
    :rtype: DataFrame or AxesSubplot or tuple or None
+
+
+.. py:function:: elbow_curve(clusters: Sequence[int], wcss_values: Sequence[float], x_knee: Optional[float]) -> None
+
+   Plot the within-cluster sum of squares (WCSS) elbow curve.
+
+   :param clusters: Number of clusters evaluated.
+   :type clusters: array-like
+   :param wcss_values: WCSS values for each evaluated cluster count.
+   :type wcss_values: array-like
+   :param x_knee: Suggested elbow point to draw as a vertical reference line.
+   :type x_knee: float or None
+
+   :rtype: None
+
+
+.. py:function:: elbow_curve_leiden(wcss_df: pandas.DataFrame, step_size: float, x_knee: Optional[float]) -> None
+
+   Plot the Leiden resolution elbow curve.
+
+   :param wcss_df: DataFrame containing the resolution, WCSS, and cluster counts.
+   :type wcss_df: DataFrame
+   :param step_size: Resolution step used to construct the grid of values.
+   :type step_size: float
+   :param x_knee: Suggested elbow point to draw as a vertical reference line.
+   :type x_knee: float or None
+
+   :rtype: None
 
 

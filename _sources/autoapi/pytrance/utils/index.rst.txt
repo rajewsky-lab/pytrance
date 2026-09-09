@@ -19,16 +19,16 @@ Functions
 Module Contents
 ---------------
 
-.. py:function:: get_neighbors(cell_df: pandas.DataFrame, radius: int = 2, n_neighbors: int = 20, metric: str = 'euclidean', mode: str = 'connectivity', x_key='x_pos', y_key='y_pos', z_key=None, n_jobs: int = 1, include_self: bool = False) -> tuple[scipy.sparse.csr_matrix, scipy.sparse.csr_matrix]
+.. py:function:: get_neighbors(cell_df: pandas.DataFrame, radius: Optional[int] = 2, n_neighbors: int = 20, metric: str = 'euclidean', mode: str = 'connectivity', x_key: str = 'x_pos', y_key: str = 'y_pos', z_key: Optional[str] = None, n_jobs: int = 1, include_self: bool = False, distance_weighted: bool = False) -> scipy.sparse.csr_matrix
 
    Build a spatial neighbor graph from transcript coordinates.
 
    :param cell_df: DataFrame containing transcript information of input cell.
    :type cell_df: DataFrame
-   :param radius: Search radius for neighbors. If provided, radius_neighbors_graph is used.
-                  Default is 2.
-   :type radius: int, optional
-   :param n_neighbors: Number of nearest neighbors to consider when radius is None.
+   :param radius: Search radius for neighbors. If provided, ``radius_neighbors_graph`` is
+                  used. If None, ``kneighbors_graph`` is used instead. Default is 2.
+   :type radius: int or None, optional
+   :param n_neighbors: Number of nearest neighbors to consider when ``radius`` is None.
                        Default is 20.
    :type n_neighbors: int, optional
    :param metric: Distance metric to use. Default is "euclidean".
@@ -36,20 +36,23 @@ Module Contents
    :param mode: Type of graph returned. "connectivity" returns binary adjacency matrix,
                 "distance" returns distance values. Default is "connectivity".
    :type mode: str, optional
-   :param x_key: Column name for x coordinates in cell_df. Default is "x_pos".
+   :param x_key: Column name for x coordinates in ``cell_df``. Default is "x_pos".
    :type x_key: str, optional
-   :param y_key: Column name for y coordinates in cell_df. Default is "y_pos".
+   :param y_key: Column name for y coordinates in ``cell_df``. Default is "y_pos".
    :type y_key: str, optional
-   :param z_key: Column name for z coordinates in cell_df. If None, 2D coordinates are used.
-                 Default is None.
+   :param z_key: Column name for z coordinates in ``cell_df``. If None, 2D coordinates are
+                 used. Default is None.
    :type z_key: str, optional
    :param n_jobs: Number of parallel jobs for neighbor computation. Default is 1.
    :type n_jobs: int, optional
    :param include_self: Whether to include self-loops in the graph. Default is False.
    :type include_self: bool, optional
+   :param distance_weighted: If True, rescale edge weights between 0 and 1 based on the neighbor
+                             distance. Default is False.
+   :type distance_weighted: bool, optional
 
    :returns: Sparse adjacency matrix in CSR format representing the neighbor graph.
-   :rtype: tuple[csr_matrix, csr_matrix]
+   :rtype: csr_matrix
 
 
 .. py:function:: get_gene_subclusters(genes: Sequence[Any], clustering_model: Any) -> dict
@@ -66,15 +69,15 @@ Module Contents
    :rtype: dict
 
 
-.. py:function:: sparse_mx_to_torch_sparse_tensor(sparse_mx: scipy.sparse.spmatrix)
+.. py:function:: sparse_mx_to_torch_sparse_tensor(sparse_mx: scipy.sparse.spmatrix) -> torch.Tensor
 
-   Convert a scipy sparse matrix to a PyTorch sparse tensor.
+   Convert a SciPy sparse matrix to a PyTorch sparse tensor.
 
    :param sparse_mx: Input sparse matrix (converted to COO format internally).
    :type sparse_mx: scipy.sparse matrix
 
    :returns: Sparse tensor in COO format with float32 dtype.
-   :rtype: torch.sparse.FloatTensor
+   :rtype: torch.Tensor
 
 
 .. py:function:: get_tree_linkage(model: Any) -> numpy.ndarray
@@ -89,7 +92,7 @@ Module Contents
    :rtype: ndarray
 
 
-.. py:function:: compute_figure_size(adata: anndata.AnnData, cells: Sequence[Any], n_rows: int, n_cols: int, scale: float = 0.1, col_padding: float = 1, row_padding: float = 20, boundary_padding: float = 1, cell_key: str = 'cell', x_key: str = 'x', y_key: str = 'y') -> Tuple[float, float, List[float], List[float], List[List[float]], List[List[float]], float, float]
+.. py:function:: compute_figure_size(adata: anndata.AnnData, cells: Sequence[Any], n_rows: int, n_cols: int, scale: float = 0.1, col_padding: float = 1, row_padding: float = 20, boundary_padding: float = 1, cell_key: str = 'cell', x_key: str = 'x', y_key: str = 'y') -> tuple[float, float, list[float], list[float], list[list[float]], list[list[float]], float, float]
 
    Calculate optimized figure dimensions for multi-panel subplot layouts.
 

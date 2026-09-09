@@ -1,0 +1,29 @@
+pytrance.data.example_dataset
+=============================
+
+.. py:module:: pytrance.data.example_dataset
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   pytrance.data.example_dataset.FETCHER
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   pytrance.data.example_dataset.load_example
+
+
+Module Contents
+---------------
+
+.. py:data:: FETCHER
+
+.. py:function:: load_example()
+
