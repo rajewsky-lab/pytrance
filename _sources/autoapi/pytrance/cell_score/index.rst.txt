@@ -170,7 +170,7 @@ Module Contents
                               CLQs from permutations.
    :type cell_clqs_permuted: dict
    :param percentile: Lower-tail percentile used for the two-sided test. A cell is significant
-                      if its empirical p-value is at most ``2 * percentile / 100``.
+                      if its empirical p-value is at most ``percentile / 100``.
                       Default is 5.
    :type percentile: float, optional
 
