@@ -488,7 +488,7 @@ def clq_significance(
         CLQs from permutations.
     percentile : float, optional
         Lower-tail percentile used for the two-sided test. A cell is significant
-        if its empirical p-value is at most ``2 * percentile / 100``.
+        if its empirical p-value is at most ``percentile / 100``.
         Default is 5.
 
     Returns
@@ -507,13 +507,14 @@ def clq_significance(
         permutation_clqs = np.asarray(clqs)
         observed_clq = cell_clqs[cell]
         n_permutations = permutation_clqs.size
-        null_at_or_below_observed = np.sum(permutation_clqs <= observed_clq)
-        null_at_or_above_observed = np.sum(permutation_clqs >= observed_clq)
-        lower_p = (null_at_or_below_observed + 1) / (n_permutations + 1)
-        upper_p = (null_at_or_above_observed + 1) / (n_permutations + 1)
+        n_below = np.sum(permutation_clqs < observed_clq)
+        n_above = np.sum(permutation_clqs > observed_clq)
+        n_ties  = np.sum(permutation_clqs == observed_clq)
+        lower_p = (n_below + 0.5 * n_ties + 1) / (n_permutations + 1)
+        upper_p = (n_above + 0.5 * n_ties + 1) / (n_permutations + 1)
         p_value = min(1.0, 2 * min(lower_p, upper_p))
         p_values[cell] = p_value
-        if p_value <= 2 * percentile / 100:
+        if p_value <= percentile / 100:
             significant_clq_cells.append(cell)
 
     return significant_clq_cells, p_values
